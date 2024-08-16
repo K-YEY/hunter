@@ -19,12 +19,12 @@ class Service extends Model
     ];
 
     // Define the relationship with the Image model
-    public function coverImage()
+    public function cover()
     {
         return $this->belongsTo(Image::class, 'cover_id');
     }
 
-    // If there is a type model, define the relationship
+    // If there is a Type model associated with `type_id`, define the relationship
     public function type()
     {
         return $this->belongsTo(CommonType::class, 'type_id');

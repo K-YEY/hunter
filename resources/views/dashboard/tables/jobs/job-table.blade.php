@@ -5,7 +5,7 @@
         subTitle="Remember well that you will only live once.  if write @Publish , @Draft."
         page="Jobs"></x-dashboard.breadcrumb.breadcrumb>
     <x-dashboard.searchbar.searchtable action="{{ route('admin.job.table') }}" value="{{ request()->input('search') }}"
-        placeholder="Careers"></x-dashboard.searchbar.searchtable>
+        placeholder="Jobs"></x-dashboard.searchbar.searchtable>
 
     <div class="card card-body border-0 shadow table-wrapper table-responsive">
         <table class="table table-hover">
@@ -114,7 +114,7 @@
                             <div class="modal-content">
 
                                 <div class="modal-header">
-                                    <h2 class="h6 modal-title"> Message</h2>
+                                    <h2 class="h6 modal-title">Info</h2>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -122,9 +122,9 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
-                                            <p> {{ $job->sub_title }}</p>
-                                            <br>
-                                            <p> {{ $job->desc }}</p>
+                                            <p>SubTitle: {{ $job->sub_title }}</p>
+                                            <p>List: {{ $job->list_of_text }}</p>
+                                            <p>Description: {{ $job->desc }}</p>
 
                                         </div>
                                     </div>

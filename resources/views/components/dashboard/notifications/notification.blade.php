@@ -1,4 +1,4 @@
-<li class="nav-item dropdown">
+<li class="nav-item dropdown" hidden>
     <a class="nav-link text-dark notification-bell unread dropdown-toggle"
         data-unread-notifications="true" href="#" role="button" data-bs-toggle="dropdown"
         data-bs-display="static" aria-expanded="false">

@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\admin\CareersController as DashCareersController;
 use App\Http\Controllers\admin\ContactController as DashContactController;
 use App\Http\Controllers\admin\JobController as DashJobController;
+use App\Http\Controllers\admin\ServicesController as DashServicesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,6 +24,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/table/careers', [DashCareersController::class, 'index'])->name('admin.careers.table');
         Route::get('/table/contact', [DashContactController::class, 'index'])->name('admin.contact.table');
         Route::get('/table/job', [DashJobController::class, 'index'])->name('admin.job.table');
+        Route::get('/table/services', [DashServicesController::class, 'index'])->name('admin.service.table');
 
         // Admins ⚙️
         Route::get('/create-admin', [AdminsController::class, 'create'])->name('admin.create');
@@ -31,6 +33,10 @@ Route::group(['prefix' => 'admin'], function () {
         // job 👨‍💻
         Route::get('/create-job', [DashJobController::class, 'create'])->name('admin.job.create');
         Route::get('/edit-job/{id}', [DashJobController::class, 'edit'])->name('admin.job.edit');
+
+        // job 👨‍💻
+        Route::get('/create-service', [DashServicesController::class, 'create'])->name('admin.service.create');
+        Route::get('/edit-service/{id}', [DashServicesController::class, 'edit'])->name('admin.service.edit');
 
         // action 👨‍💻
         Route::group(['prefix' => '/action'], function () {
@@ -42,6 +48,10 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/edit-job', [DashJobController::class, 'update'])->name('admin.edit.job.update');
             Route::get('/delete-job/{id}', [DashJobController::class, 'destroy'])->name('admin.delete.job');
 
+
+            Route::post('/create-service', [DashServicesController::class, 'store'])->name('admin.create.service.store');
+            Route::post('/edit-service', [DashServicesController::class, 'update'])->name('admin.edit.service.update');
+            Route::get('/delete-service/{id}', [DashServicesController::class, 'destroy'])->name('admin.delete.service');
 
             Route::get('/delete-careers/{id}', [DashCareersController::class, 'destroy'])->name('admin.delete.careers');
             Route::post('/update-careers', [DashCareersController::class, 'updateStatus'])->name('admin.update.careers');
