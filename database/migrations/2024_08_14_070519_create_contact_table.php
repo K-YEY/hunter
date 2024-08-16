@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('country');
             $table->longText('message');
             $table->timestamp('schedule')->nullable();
+            $table->longText('zoom_link')->nullable();
             $table->string('ip');
             $table->timestamps();
         });

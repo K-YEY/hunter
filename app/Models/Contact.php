@@ -17,6 +17,7 @@ class Contact extends Model
         'country',
         'message',
         'schedule',
+        'zoom_link',
         'ip',
     ];
 

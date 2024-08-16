@@ -3,7 +3,7 @@
 use App\Http\Controllers\admin\AdminsController;
 use App\Http\Controllers\admin\DashBoardController;
 use App\Http\Controllers\admin\LoginController;
-use App\Http\Controllers\CommonType;
+use App\Http\Controllers\CommonTypeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,7 +17,7 @@ Route::group(['prefix' => 'admin'], function () {
         // view 🤗
         Route::get('/', [DashBoardController::class, 'index'])->name('admin.index');
         Route::get('/table/admins', [AdminsController::class, 'showTable'])->name('admin.admins.table');
-        Route::get('/table/type', [CommonType::class, 'index'])->name('admin.commontype.table');
+        Route::get('/table/careers', [AdminsController::class, 'index'])->name('admin.careers.table');
 
         // Admins ⚙️
         Route::get('/create-admin', [AdminsController::class, 'create'])->name('admin.create');

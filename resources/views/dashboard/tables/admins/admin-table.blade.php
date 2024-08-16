@@ -65,7 +65,7 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h2 class="h6 modal-title">Delete <b>{{ $admin->name }}</b></h2>
+                                                <h2 class="h6 modal-title">Delete <del>{{ $admin->name }}</del></h2>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
