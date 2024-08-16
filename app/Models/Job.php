@@ -21,7 +21,7 @@ class Job extends Model
     ];
 
     // Define the relationship with the Image model
-    public function coverImage()
+   public function cover()
     {
         return $this->belongsTo(Image::class, 'cover_id');
     }

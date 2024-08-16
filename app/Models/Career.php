@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 
 class Career extends Model
 {
@@ -13,8 +14,8 @@ class Career extends Model
         'name',
         'email',
         'phone',
-        'country_id',
-        'education_id',
+        'country_code',
+        'education',
         'is_job',
         'is_remote',
         'hear_us',
@@ -25,13 +26,13 @@ class Career extends Model
     ];
 
     // If needed, you can define relationships for `country_id` and `education_id`
-    public function country()
+    public function getCountryNameAttribute()
     {
-        return $this->belongsTo(Country::class);
+        $countries = json_decode(File::get(storage_path('app/public/countries.json')), true);
+
+        $country = collect($countries)->firstWhere('code', $this->country_code);
+
+        return $country ? $country['name'] : null;
     }
 
-    public function education()
-    {
-        return $this->belongsTo(Constant::class);
-    }
 }

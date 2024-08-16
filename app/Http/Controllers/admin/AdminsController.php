@@ -67,7 +67,7 @@ class AdminsController extends Controller
     {
 
         $admin = Admin::find($id);
-
+        if(!$admin) abort(404);
         return view(self::$basePath . '.create-edit-admin', compact('admin'));
     }
 

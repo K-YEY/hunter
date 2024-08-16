@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->integer('country_id');
-            $table->integer('education_id');
+            $table->integer('country_code');
+            $table->string('education');
             $table->enum('is_job',['True','False']);
             $table->enum('is_remote',['True','False']);
             $table->string('hear_us');

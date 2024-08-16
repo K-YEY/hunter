@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Career;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class CareersController extends Controller
+class ContactController extends Controller
 {
+    //
 
 
     public function index(Request $request)
     {
-        $query = Career::query();
+        $query = Contact::query();
 
         if ($request->has('search')) {
             $search = $request->input('search');
@@ -24,36 +25,35 @@ class CareersController extends Controller
             } else {
                 $query->where('name', 'LIKE', "%{$search}%")
                     ->orWhere('email', 'LIKE', "%{$search}%")
-                    ->orWhere('phone', 'LIKE', "%{$search}%");
+                    ->orWhere('company_name', 'LIKE', "%{$search}%");
             }
         }
 
-        $careers = $query->paginate(15);  // Use the $query variable here
-        return view('dashboard.tables.careers.careers-table', compact('careers'));
+        $contacts = $query->paginate(15);  // Use the $query variable here
+        return view('dashboard.tables.contact.contact-table', compact('contacts'));
     }
-
     public function destroy($id)
     {
-        $career = Career::find($id);
-        if (!$career) {
-            Notyf()->warning('Career not found');
+        $contact = Contact::find($id);
+        if (!$contact) {
+            Notyf()->warning('Contact not found');
             return redirect()->back();
         }
-        $career->delete();
-        Notyf()->success('Career deleted successfully');
+        $contact->delete();
+        Notyf()->success('Contact deleted successfully');
         return redirect()->back();
     }
     public function updateStatus(Request $request)
     {
 
-        $career = Career::find($request->id);
-        if (!$career) {
-            Notyf()->warning('Career not found');
+        $contact = Contact::find($request->id);
+        if (!$contact) {
+            Notyf()->warning('Contact not found');
             return redirect()->back();
         }
-        $career->status = $request->status;
-        $career->save();
-        Notyf()->success('Career status updated successfully');
+        $contact->status = $request->status;
+        $contact->save();
+        Notyf()->success('Contact status updated successfully');
         return redirect()->back();
     }
 }

@@ -34,5 +34,8 @@ class Admin extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($value);
     }
-    // explode(' ', $this->attributes['name'])[0];
+    public function findForPassport($username)
+    {
+        return $this->where('username', $username)->first();
+    }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
@@ -9,9 +10,10 @@ use Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
 
-        if(Auth::check()) {
+        if (Auth::check()) {
             return redirect()->route('admin.index');
         }
         return view('dashboard.auth.login');
@@ -24,13 +26,15 @@ class LoginController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
     public function login(Request $request)
     {
         // Validate the login request
         $this->validateLogin($request);
 
         // Attempt to log the user in
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password], $request->filled('remember'))) {
+        if (Auth::attempt(['username' => $request->input('username'), 'password' => $request->input('password')], $request->filled('remember'))) {
+            
             // Regenerate session to protect against session fixation
             $request->session()->regenerate();
 
@@ -53,7 +57,7 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         $request->validate([
-            'username' => 'required|string',
+            'username' => 'required|string', // Ensure this matches your database field
             'password' => 'required|string',
         ]);
     }
@@ -67,13 +71,13 @@ class LoginController extends Controller
     protected function sendFailedLoginResponse(Request $request)
     {
         // Add the error message using Notyf or any other flash message
+        // Ensure Notyf is properly configured
         Notyf()->error('Invalid Username or Password');
 
         // Redirect back with input except the password
         return redirect()->back()
             ->withInput($request->only('username', 'remember'));
     }
-
     /**
      * Log the user out of the application.
      *
@@ -82,10 +86,14 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
+        // Log the user out of the application
         Auth::logout();
 
         // Invalidate the user's session
         $request->session()->invalidate();
+
+        // Clear all session data
+        $request->session()->flush();
 
         // Regenerate the CSRF token to protect against CSRF attacks
         $request->session()->regenerateToken();
@@ -93,4 +101,5 @@ class LoginController extends Controller
         // Redirect to the homepage or login page
         return redirect()->route('admin.login');
     }
+
 }

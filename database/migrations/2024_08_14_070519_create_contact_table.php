@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('message');
             $table->timestamp('schedule')->nullable();
             $table->longText('zoom_link')->nullable();
+            $table->enum('status', ['Meeting', 'Waiting', 'Met'])->default('Waiting');
             $table->string('ip');
             $table->timestamps();
         });

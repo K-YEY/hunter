@@ -1,9 +1,10 @@
 <x-dashboard.layout.layout title="Dashboard">
 
 
-    <x-dashboard.breadcrumb.breadcrumb title="Careers" subTitle="Remember well that you will only live once.  if write @reviewing , @accepted , @rejected FILTERS. "
-        page="Careers" titleBtn="Add"></x-dashboard.breadcrumb.breadcrumb>
-    <x-dashboard.searchbar.searchtable action="{{ route('admin.careers.table') }}"
+    <x-dashboard.breadcrumb.breadcrumb title="Contact"
+        subTitle="Remember well that you will only live once.  if write @Meeting , @Waiting , @Met FILTERS. "
+        page="Contact"></x-dashboard.breadcrumb.breadcrumb>
+    <x-dashboard.searchbar.searchtable action="{{ route('admin.contact.table') }}"
         value="{{ request()->input('search') }}" placeholder="Careers"></x-dashboard.searchbar.searchtable>
 
     <div class="card card-body border-0 shadow table-wrapper table-responsive">
@@ -13,63 +14,62 @@
                     <th class="border-gray-200">#</th>
                     <th class="border-gray-200">Name</th>
                     <th class="border-gray-200">Email</th>
-                    <th class="border-gray-200">Phone</th>
+                    <th class="border-gray-200">Compant Name</th>
                     <th class="border-gray-200">Country</th>
-                    <th class="border-gray-200">Work</th>
-                    <th class="border-gray-200">HAU</th>
+                    <th class="border-gray-200">Message (click to show more)</th>
+                    <th class="border-gray-200">Schedule</th>
                     <th class="border-gray-200">Status</th>
                     <th class="border-gray-200">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @if ($careers->count() == 0)
+                @if ($contacts->count() == 0)
                     <tr>
                         <td colspan="4">
                             <div class="alert alert-info" role="alert">
-                                No careers found
+                                No contacts found
                             </div>
                         </td>
                     </tr>
                 @endif
-                @foreach ($careers as $career)
+                @foreach ($contacts as $contact)
                     <tr>
                         <td>
-                            <a href="#" class="fw-bold">{{ $career->id }}</a>
+                            <a href="#" class="fw-bold">{{ $contact->id }}</a>
                         </td>
                         <td>
-                            <span class="fw-normal">{{ $career->name }}</span>
+                            <span class="fw-normal">{{ $contact->name }}</span>
                         </td>
                         <td>
-                            <span class="fw-bold"> {{ $career->email }}</span>
+                            <span class="fw-bold"> {{ $contact->email }}</span>
                         </td>
                         <td>
-                            <span class="fw-normal"> {{ $career->phone }}</span>
+                            <span class="fw-normal"> {{ $contact->company_name }}</span>
                         </td>
                         <td>
-                            <span class="fw-bold"> {{ $career->country_name }}</span>
+                            <span class="fw-normal"> {{ $contact->country_name }}</span>
                         </td>
 
                         <td>
-                            <span class="fw-normal"> In a job: {{ $career->is_job ? 'Yes' : 'No' }} </span>,
-                            <span class="fw-normal"> Remotely work: {{ $career->is_remote ? 'Yes' : 'No' }}</span>,
-                            <span class="fw-normal"> Education Lavel: {{ $career->education }}</span>
+                            <span class="fw-bold"><a href="javascript:void(0)" data-bs-toggle="modal"
+                                data-bs-target="#modal-more-{{ $contact->id }}"  >{{ Str::limit($contact->message, 30) }}</a></span>
                         </td>
                         <td>
-                            <span class="fw-bold"> {{ $career->hear_us }} </span>
+                            <span class="fw-bold"> {{ $contact->schedule }} </span>
                         </td>
                         <td>
                             <span
-                                class="fw-bold     @if ($career->status == 'Accepted') bg-success
-                                @elseif ($career->status == 'Rejected')
-                                    bg-danger
+                                class="fw-bold     @if ($contact->status == 'Meeting') bg-success
+                                @elseif ($contact->status == 'Met')
+                                    bg-info
                                 @else
                                     bg-warning @endif  px-2 py-1 rounded text-white">
-                                @if ($career->status == 'Accepted')
-                                    Accepted
-                                @elseif ($career->status == 'Rejected')
-                                    Rejected
+                                @if ($contact->status == 'Meeting')
+                                    Meeting
+                                @elseif ($contact->status == 'Met')
+                                    Met
                                 @else
-                                    Reviewing
+                                    Waiting
                                 @endif
 
                             </span>
@@ -77,46 +77,29 @@
 
                         <td>
                             <div class="btn-group">
-                                {{-- view resume --}}
-                                <a href="{{ asset('storage/resume/' . $career->resume) }}" target="_blank"> <svg
+                                {{-- meeting --}}
+                                <a href="{{  $contact->zoom_link }}" target="_blank"> <svg
                                         class="icon icon-xs text-gray-600" fill="none" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M20.3116 12.6473L20.8293 10.7154C21.4335 8.46034 21.7356 7.3328 21.5081 6.35703C21.3285 5.58657 20.9244 4.88668 20.347 4.34587C19.6157 3.66095 18.4881 3.35883 16.2331 2.75458C13.978 2.15033 12.8504 1.84821 11.8747 2.07573C11.1042 2.25537 10.4043 2.65945 9.86351 3.23687C9.27709 3.86298 8.97128 4.77957 8.51621 6.44561C8.43979 6.7254 8.35915 7.02633 8.27227 7.35057L8.27222 7.35077L7.75458 9.28263C7.15033 11.5377 6.84821 12.6652 7.07573 13.641C7.25537 14.4115 7.65945 15.1114 8.23687 15.6522C8.96815 16.3371 10.0957 16.6392 12.3508 17.2435L12.3508 17.2435C14.3834 17.7881 15.4999 18.0873 16.415 17.9744C16.5152 17.9621 16.6129 17.9448 16.7092 17.9223C17.4796 17.7427 18.1795 17.3386 18.7203 16.7612C19.4052 16.0299 19.7074 14.9024 20.3116 12.6473Z"
-                                            stroke="#1C274C" stroke-width="1.5" />
-                                        <path opacity="0.5"
-                                            d="M16.415 17.9741C16.2065 18.6126 15.8399 19.1902 15.347 19.6519C14.6157 20.3368 13.4881 20.6389 11.2331 21.2432C8.97798 21.8474 7.85044 22.1495 6.87466 21.922C6.10421 21.7424 5.40432 21.3383 4.86351 20.7609C4.17859 20.0296 3.87647 18.9021 3.27222 16.647L2.75458 14.7151C2.15033 12.46 1.84821 11.3325 2.07573 10.3567C2.25537 9.58627 2.65945 8.88638 3.23687 8.34557C3.96815 7.66065 5.09569 7.35853 7.35077 6.75428C7.77741 6.63996 8.16368 6.53646 8.51621 6.44531"
-                                            stroke="#1C274C" stroke-width="1.5" />
-                                        <path d="M11.7769 10L16.6065 11.2941" stroke="#1C274C" stroke-width="1.5"
-                                            stroke-linecap="round" />
-                                        <path opacity="0.5" d="M11 12.8975L13.8978 13.6739" stroke="#1C274C"
-                                            stroke-width="1.5" stroke-linecap="round" />
-                                    </svg>
-                                </a>
-                                {{-- view profile --}}
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
 
-                                <a href="{{ $career->profile }}" target="_blank"> <svg
-                                        class="icon icon-xs text-gray-600" fill="none" viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="9" cy="9" r="2" stroke="#1C274C"
-                                            stroke-width="1.5" />
-                                        <path
-                                            d="M13 15C13 16.1046 13 17 9 17C5 17 5 16.1046 5 15C5 13.8954 6.79086 13 9 13C11.2091 13 13 13.8954 13 15Z"
-                                            stroke="#1C274C" stroke-width="1.5" />
-                                        <path opacity="0.5"
-                                            d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12C22 15.7712 22 17.6569 20.8284 18.8284C19.6569 20 17.7712 20 14 20H10C6.22876 20 4.34315 20 3.17157 18.8284C2 17.6569 2 15.7712 2 12Z"
-                                            stroke="#1C274C" stroke-width="1.5" />
-                                        <path d="M19 12H15" stroke="#1C274C" stroke-width="1.5"
-                                            stroke-linecap="round" />
-                                        <path d="M19 9H14" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
-                                        <path opacity="0.9" d="M19 15H16" stroke="#1C274C" stroke-width="1.5"
-                                            stroke-linecap="round" />
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22Z"
+                                                stroke="#10B981" stroke-width="1.5" />
+                                            <path opacity="0.5"
+                                                d="M16 12C16 11.1555 15.0732 10.586 13.2195 9.44695C11.3406 8.29234 10.4011 7.71504 9.70056 8.13891C9 8.56279 9 9.70853 9 12C9 14.2915 9 15.4372 9.70056 15.8611C10.4011 16.285 11.3406 15.7077 13.2195 14.5531C15.0732 13.414 16 12.8445 16 12Z"
+                                                stroke="#10B981" stroke-width="1.5" stroke-linecap="round" />
+                                        </g>
+
                                     </svg>
                                 </a>
+
                                 {{-- edit --}}
-
                                 <a href="javascript:void(0)" data-bs-toggle="modal"
-                                    data-bs-target="#modal-default-{{ $career->id }}"> <svg
+                                    data-bs-target="#modal-default-{{ $contact->id }}"> <svg
                                         class="icon icon-xs text-gray-600" fill="none" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path opacity="0.5"
@@ -131,11 +114,11 @@
                                     </svg>
                                 </a>
                                 <!-- Modal Content -->
-                                <div class="modal fade" id="modal-default-{{ $career->id }}" tabindex="-1"
+                                <div class="modal fade" id="modal-default-{{ $contact->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="modal-default" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
-                                            <form action="{{route('admin.update.careers')}}" method="POST">
+                                            <form action="{{ route('admin.update.contact') }}" method="POST">
                                                 @csrf
                                                 <div class="modal-header">
                                                     <h2 class="h6 modal-title"> Edit Status</h2>
@@ -144,25 +127,23 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <input type="hidden" name="id"
-                                                        value="{{ $career->id }}">
+                                                    <input type="hidden" name="id" value="{{ $contact->id }}">
                                                     <div class="row">
                                                         <div class="col-md-12 mb-3">
                                                             <div class="form-group">
                                                                 <label for="status">Status</label>
                                                                 <select class="form-select" name="status"
-                                                                    id="status"
-                                                                    aria-label="Default select example">
+                                                                    id="status" aria-label="Default select example">
 
-                                                                    <option value="Accepted"
-                                                                        @if ($career->status == 'Accepted') selected @endif>
-                                                                        Accepted</option>
-                                                                    <option value="Rejected"
-                                                                        @if ($career->status == 'Rejected') selected @endif>
-                                                                        Rejected</option>
-                                                                    <option value="Reviewing"
-                                                                        @if ($career->status == 'Reviewing') selected @endif>
-                                                                        Reviewing</option>
+                                                                    <option value="Meeting"
+                                                                        @if ($contact->status == 'Meeting') selected @endif>
+                                                                        Meeting</option>
+                                                                    <option value="Waiting"
+                                                                        @if ($contact->status == 'Waiting') selected @endif>
+                                                                        Waiting</option>
+                                                                    <option value="Met"
+                                                                        @if ($contact->status == 'Met') selected @endif>
+                                                                        Met</option>
 
 
                                                                 </select>
@@ -172,7 +153,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-success animate-up-2">Save</button>
+                                                    <button type="submit"
+                                                        class="btn btn-success animate-up-2">Save</button>
                                                     <button type="button" class="btn btn-link text-gray-600 ms-auto"
                                                         data-bs-dismiss="modal">Close</button>
                                                 </div>
@@ -186,7 +168,7 @@
 
                                 {{-- delete --}}
 
-                                <a href="{{ route('admin.delete.careers', $career->id) }}">
+                                <a href="{{ route('admin.delete.contact', $contact->id) }}">
                                     <svg class="icon icon-xs text-gray-600" fill="none" viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0" />
@@ -211,6 +193,38 @@
                             </div>
                         </td>
                     </tr>
+          <!-- Modal Content -->
+          <div class="modal fade" id="modal-more-{{ $contact->id }}" tabindex="-1"
+            role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h2 class="h6 modal-title"> Message</h2>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                 <p> {{ $contact->message }}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-link text-gray-600 ms-auto"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal Content -->
+
+
                 @endforeach
             </tbody>
         </table>
@@ -220,23 +234,23 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination mb-0">
                     <!-- Previous Page Link -->
-                    @if ($careers->onFirstPage())
+                    @if ($contacts->onFirstPage())
                         <li class="page-item disabled"><span class="page-link">Previous</span></li>
                     @else
                         <li class="page-item"><a class="page-link"
-                                href="{{ $careers->previousPageUrl() }}">Previous</a>
+                                href="{{ $contacts->previousPageUrl() }}">Previous</a>
                         </li>
                     @endif
 
                     <!-- Pagination Elements -->
-                    @foreach ($careers->links()->elements as $element)
+                    @foreach ($contacts->links()->elements as $element)
                         @if (is_string($element))
                             <li class="page-item disabled"><span class="page-link">{{ $element }}</span></li>
                         @endif
 
                         @if (is_array($element))
                             @foreach ($element as $page => $url)
-                                @if ($page == $careers->currentPage())
+                                @if ($page == $contacts->currentPage())
                                     <li class="page-item active"><span class="page-link">{{ $page }}</span>
                                     </li>
                                 @else
@@ -248,8 +262,8 @@
                     @endforeach
 
                     <!-- Next Page Link -->
-                    @if ($careers->hasMorePages())
-                        <li class="page-item"><a class="page-link" href="{{ $careers->nextPageUrl() }}">Next</a>
+                    @if ($contacts->hasMorePages())
+                        <li class="page-item"><a class="page-link" href="{{ $contacts->nextPageUrl() }}">Next</a>
                         </li>
                     @else
                         <li class="page-item disabled"><span class="page-link">Next</span></li>
@@ -258,8 +272,8 @@
             </nav>
 
             <div class="fw-normal small mt-4 mt-lg-0">
-                Showing <b>{{ $careers->firstItem() }}</b> to <b>{{ $careers->lastItem() }}</b> out of
-                <b>{{ $careers->total() }}</b> entries
+                Showing <b>{{ $contacts->firstItem() }}</b> to <b>{{ $contacts->lastItem() }}</b> out of
+                <b>{{ $contacts->total() }}</b> entries
             </div>
         </div>
 
