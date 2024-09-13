@@ -4,43 +4,38 @@
  @import "_custom-variables/static";
  @import "_components/about";
  @import "_components/services";
- @import "_components/footer";
  @import "_components/contact";
+ @import "_components/career";
+ @import "_components/privacy";
+ @import "_components/footer";
 
  @import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap');
  @import url("../css/splide.min.css");
 
  //  hero sec
  .hero {
-   height: 80vh;
-   display: flex;
-   align-items: center;
    background: linear-gradient(#031D2D, #2B266A);
    position: relative;
    z-index: 1;
-   padding: 100px 0 60px 0;
-
-   @media (max-width:768px) {
-     padding: 80px 0 30px 0;
-     height: 50vh;
-
-   }
+   padding: 200px 0;
 
    &::after {
      content: "";
-     background-image: url("../img/group.svg");
-     background-size: cover;
-     background-position: center;
-     background-repeat: no-repeat;
-     width: 100%;
-     height: 100%;
      position: absolute;
-     left: 0;
-     top: 0;
+     inset: 0;
+     width: 100%;
+     height: 130%;
+     background-image: url(../img/bgMain.svg);
+     background-repeat: no-repeat;
+     background-size: contain;
      z-index: -1;
    }
 
+   @media (max-width:768px) {
+     padding: 120px 0;
+     height: auto;
 
+   }
 
    .hero-img {
      transform: translate(-20%, 10%);
@@ -254,7 +249,8 @@
      display: flex;
      justify-content: center;
      margin-bottom: 60px;
-    box-shadow:10px 15px 0px #8438F126;
+     box-shadow: 10px 15px 0px #8438F126;
+
      .icon {
        width: 60px;
        height: 60px;
@@ -485,7 +481,7 @@
      padding: 50px 27px 10px 27px;
      color: white;
      position: relative;
-
+     margin-bottom: 50px; 
      @media (max-width:768px) {
        margin-bottom: 60px;
      }
@@ -928,4 +924,631 @@
 
 
  }
- 
+
+ .apply {
+   height: 100vh;
+   background: linear-gradient(#2B266A, #031D2D);
+   position: relative;
+   z-index: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   &::after {
+     content: "";
+     background-image: url(../img/group.svg);
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     left: 0;
+     top: 0;
+     z-index: -1;
+   }
+ }
+
+ //  
+ .timeline {
+   background: linear-gradient(#2B266A, #031D2D);
+
+   .timelineBoxContainer {
+     padding: 70px 0;
+
+     >div {
+       >div {
+         position: relative;
+
+         .timelineBox {
+           position: relative;
+           padding: 35px 50px;
+
+           // border: 2px solid;
+           // border-image: linear-gradient(90deg, rgba(111,58,203,1) 30%, rgba(255, 255, 255 ,1) 100%) 1;
+           svg {
+             position: absolute;
+             top: -40px;
+             z-index: 3;
+           }
+
+           h3 {
+             font-size: 20px;
+             font-weight: bolder;
+             color: $whitColor;
+           }
+
+           p {
+             font-size: 16px;
+             color: #bbb;
+             margin: 0;
+           }
+
+         }
+
+         margin-top: -2px;
+
+         &:nth-child(even) {
+           margin-left: auto;
+
+           .timelineBox {
+             border: 2px solid #fff;
+             border-inline-start: none;
+             border-radius: 0 25px 25px 0;
+           }
+         }
+
+         &:nth-child(odd) {
+
+           .timelineBox {
+             border: 2px solid #fff;
+             border-inline-end: none;
+             border-radius: 25px 0 0 25px;
+           }
+
+         }
+
+         &:first-child,
+         &:last-child {
+           .timelineBox {
+             &::before {
+               content: "";
+               position: absolute;
+               height: 70px;
+               left: 100%;
+               width: 2px;
+               background-color: white;
+               top: -69px;
+             }
+
+             &::after {
+               content: "";
+               position: absolute;
+               border: 5px solid #8439f1;
+               border-radius: 50%;
+               padding: 2px;
+               left: calc(100% - 6px);
+               top: -80px;
+             }
+           }
+         }
+
+         &:last-child {
+           .timelineBox {
+             &::after {
+               bottom: -80px;
+               top: unset;
+               left: -4px;
+             }
+
+             &::before {
+               bottom: -70px;
+               left: 0;
+               top: unset;
+             }
+           }
+         }
+       }
+     }
+   }
+ }
+
+ .ourGoal {
+   background: linear-gradient(#031D2D, #2B266A);
+   padding: 70px 0;
+
+   .content {
+     background-size: 100% 100%;
+     background-repeat: no-repeat;
+     position: relative;
+     color: black;
+     padding: 50px;
+     text-transform: capitalize;
+     box-shadow: 0px 19px 2px #f8f3ff61;
+     background-color: $whitColor;
+     border-radius: 30px;
+     z-index: 1;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+
+     @media (max-width: 768px) {
+       flex-direction: column;
+       align-items: start;
+       padding: 30px
+     }
+
+     button {
+       background-color: #8439f1 !important;
+       color: white;
+
+       @media (max-width: 768px) {
+         margin-top: 30px;
+
+       }
+
+       svg {
+         margin-left: 10px;
+       }
+     }
+
+     &::before {
+       content: "";
+       position: absolute;
+       height: 100%;
+       width: 30%;
+       inset-inline-end: 0;
+       background-size: 100% 100%;
+       background-image: url(../img/ourGoal1.svg);
+       background-repeat: no-repeat;
+       top: 0;
+       z-index: -1;
+
+       @media (max-width: 1200px) {
+         width: 0%;
+       }
+
+       @media (max-width: 768px) {
+         width: 80%;
+       }
+     }
+
+     &::after {
+       content: "";
+       position: absolute;
+       height: 100%;
+       width: 30%;
+       inset-inline-start: 0;
+       background-size: 100% 100%;
+       background-image: url(../img/ourGoals2.svg);
+       background-repeat: no-repeat;
+       bottom: 0;
+       z-index: -1;
+
+       @media (max-width: 1200px) {
+         width: 50%;
+       }
+
+       @media (max-width: 768px) {
+         width: 100%;
+       }
+     }
+
+     .head {
+       h2 {
+         font-family: Unbounded;
+         font-size: 44px;
+         font-weight: 800;
+       }
+     }
+   }
+ }
+
+ .talent {
+   background: linear-gradient(#2B266A, #031D2D);
+
+   .talentBoxContainer {
+     padding: 70px 0;
+
+     .talentBox {
+       background:
+         linear-gradient(0deg, rgba(57, 58, 112, 1) 0%, rgba(57, 58, 112, 1) 100%) padding-box,
+         /*this is your grey background*/
+         linear-gradient(180deg, rgba(111, 58, 203, 1) 30%, rgba(255, 255, 255, 1) 85%, rgba(255, 255, 255, 0) 100%) border-box;
+       border: 3px solid transparent;
+       border-radius: 35px;
+       color: black;
+       padding: 20px;
+       padding-top: 40px;
+       position: relative;
+       box-shadow: 10px 10px #242460;
+       margin-bottom: 50px;
+       color: white;
+
+       svg {
+         position: absolute;
+         top: 0px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-50%);
+       }
+
+       p {
+         color: #bbb;
+       }
+     }
+   }
+ }
+
+ .ourPromise {
+   background: linear-gradient(#031D2D, #2B266A, #031D2D);
+   padding-bottom: 150px;
+
+   @media (max-width: 768px) {
+     padding-bottom: 70px;
+   }
+
+   .ourPromisBoxContainer {
+     position: relative;
+
+     &::before {
+       content: "";
+       position: absolute;
+       height: 2px;
+       width: 76.5%;
+       left: 50%;
+       background-color: white;
+       bottom: -50px;
+       transform: translateX(-50%);
+     }
+
+     .ourPromiseBox {
+       background-image: url(../img/ourPromiseCard.png);
+       background-size: contain;
+       background-repeat: no-repeat;
+       background-position: center;
+       padding: 20px 0;
+       position: relative;
+
+       &::before {
+         content: "";
+         position: absolute;
+         height: 50px;
+         width: 2px;
+         background-color: white;
+         top: 100%;
+         left: 50%;
+         transform: translateX(-50%);
+       }
+
+       &::after {
+         content: "";
+         position: absolute;
+         padding: 2px;
+         border: 5px solid #8439f1;
+         border-radius: 50%;
+         top: calc(100% - 10px);
+         left: 50%;
+         transform: translateX(-50%);
+
+       }
+
+       p {
+         color: $whitColor;
+       }
+     }
+   }
+ }
+
+
+ .accountant {
+   background: linear-gradient(#031D2D, #2B266A);
+   padding: 100px 0;
+   z-index: 1;
+   position: relative;
+
+   &::after {
+
+     content: "";
+     position: absolute;
+     inset: 0;
+     width: 100%;
+     height: 100%;
+     background-image: url(../img/bgMain.svg);
+     background-repeat: no-repeat;
+     background-position: top;
+     background-size: contain;
+     z-index: -1;
+
+   }
+
+   .nav {
+     background: linear-gradient(#ffffff30, #ffffff1c);
+     border-radius: 30px;
+     border: 2px 0px 2px 2px;
+     align-items: center;
+     margin-bottom: 80px;
+
+     span {
+       margin-inline-end: 10px;
+     }
+
+     a {
+       position: relative;
+       color: $mainColor;
+       font-size: 13px;
+
+       &:first-child {
+         &::after {
+           display: none;
+         }
+       }
+
+       &::after {
+         content: "";
+         position: absolute;
+         width: 10px;
+         height: 2px;
+         background-color: #FFFFFF;
+         top: 50%;
+         inset-inline-start: -4px;
+         margin-inline-end: 10px;
+       }
+
+     }
+
+     a.active {
+       color: $whitColor;
+     }
+   }
+
+   .accountant-img {
+     padding: 40px;
+     background:
+       linear-gradient(90deg, rgba(57, 58, 112, 1) 0%, rgba(57, 58, 112, 0) 100%) padding-box,
+       linear-gradient(90deg, rgba(111, 58, 203, 1) 30%, rgba(111, 58, 203, 0) 100%) border-box;
+     border: 3px solid transparent;
+     border-radius: 25px;
+   }
+
+   .accountant-info {
+     padding: 40px;
+     background:
+       linear-gradient(0deg, rgba(57, 58, 112, 1) 0%, rgba(57, 58, 112, 1) 100%) padding-box,
+       linear-gradient(0deg, rgba(111, 58, 203, 1) 30%, rgb(255, 255, 255) 100%) border-box;
+     border: 3px solid transparent;
+     border-radius: 25px;
+
+     .head {
+       h1 {
+         font-family: Unbounded;
+         font-size: 28px;
+         font-weight: 600;
+         color: $whitColor;
+         margin-top: 10px;
+       }
+
+       p {
+         color: $whitColor;
+         margin-top: 10px;
+         font-family: Unbounded;
+         font-size: 17px;
+       }
+     }
+
+     .desc {
+       margin: 30px 0;
+       font-family: Georama;
+       font-weight: 500;
+       color: $mainColor;
+
+       h3 {
+         font-size: 18px;
+         color: $mainColor;
+         margin-bottom: 10px;
+       }
+
+       p {
+         font-size: 18px;
+         color: $whitColor;
+       }
+     }
+
+     ul {
+       h3 {
+         font-family: Georama;
+         font-weight: 500;
+         color: $mainColor;
+         font-size: 18px;
+
+       }
+
+       li {
+         margin-top: 15px;
+
+         p {
+           font-size: 17px;
+           font-family: Georama;
+           color: $whitColor;
+         }
+       }
+     }
+   }
+ }
+
+ .source {
+   background: linear-gradient(#2B266A, #031D2D);
+
+   .sourceBoxContainer {
+     padding: 70px 0;
+
+     .sourceBox {
+       background:
+         linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%) padding-box,
+         /*this is your grey background*/
+         linear-gradient(180deg, rgba(111, 58, 203, 1) 30%, rgb(255, 255, 255) 100%) border-box;
+       border: 3px solid transparent;
+       border-radius: 35px;
+       background-color: white;
+       color: black;
+       padding: 20px;
+       padding-top: 40px;
+       position: relative;
+       box-shadow: 10px 10px #242460;
+       margin-bottom: 50px;
+
+       h3 {
+         font-family: Unbounded;
+         font-size: 17px;
+         font-weight: 500;
+         color: $blackColor;
+
+       }
+
+       p {
+         font-family: Georama;
+         color: #031D2D;
+       }
+
+       svg {
+         position: absolute;
+         top: 0px;
+         left: 50%;
+         transform: translateX(-50%) translateY(-50%);
+       }
+     }
+   }
+ }
+
+ .careerApply {
+  background: linear-gradient( #2B266A , #031D2D);
+   .form-details {
+    margin-top: 70px;
+     background:
+       linear-gradient(0deg, rgba(57, 58, 112, 1) 0%, rgba(57, 58, 112, 1) 100%) padding-box,
+       /*this is your grey background*/
+       linear-gradient(180deg, rgba(111, 58, 203, 1) 30%, rgb(255, 255, 255) 100%) border-box;
+     border: 3px solid transparent;
+     border-radius: 30px;
+
+     .head-form {
+       background: #8438F1;
+       box-shadow: 0px 8px 8px #031D2D26;
+       border-radius: 30px 30px 0px 0px;
+       display: flex;
+       justify-content: center;
+       padding: 25px 0;
+
+       .title-form {
+         color: white;
+         font-size: 20px;
+       }
+     }
+
+     form {
+       padding: 45px;
+     }
+
+     .inputContainer {
+       background: linear-gradient(#FFFFFF26, #FFFFFF40);
+       border-bottom: 2px solid white;
+       box-shadow: none;
+       color: white;
+       outline: 0;
+       padding-inline-start: 25px;
+       position: relative;
+       display: flex;
+       align-items: center;
+       margin-bottom: 25px;
+       gap: 20px;
+       padding-right: 20px;
+       width: 100%;
+
+       input,
+       select {
+         padding: 15px 0;
+         background-color: transparent;
+         border: 0;
+         color: white;
+       }
+
+       select {
+         height: 50px;
+       }
+
+       &.select {
+         border: 2px solid white;
+       }
+
+       input[type="file"] {
+         position: absolute;
+         inset: 0;
+         opacity: 0;
+       }
+
+       &.file {
+         background-color: white;
+         color: black;
+       }
+     }
+
+
+
+
+
+     input[type="checkbox"] {
+       &:checked::before {
+         background-color: #8438F1;
+       }
+
+       &::before {
+         content: "";
+         position: absolute;
+         border: 3px solid #8438f1;
+         background-color: #fff;
+         width: 18px;
+         height: 18px;
+         border-radius: 5px;
+         left: -2px;
+         top: -2px;
+       }
+     }
+
+     select {
+       border: 2px solid white;
+
+     }
+
+     textarea {
+       width: 100%;
+       margin-top: 20px;
+       border-radius: 30px;
+       padding: 20px;
+     }
+
+     .btn {
+       background-color: #8438f1;
+       color: white;
+       font-family: Unbounded;
+       font-size: 15px;
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+
+     }
+
+     .confirm-text {
+       label {
+         font-size: 16px;
+         font-family: Georama;
+         color: white;
+         margin-top: 40px;
+       }
+     }
+   }
+ }
+
+ @media (max-width: 768px) {
+    br {
+      display: none;
+    }
+ }
