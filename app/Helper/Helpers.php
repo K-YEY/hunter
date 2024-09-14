@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Admin\CommonType;
+
 if (!function_exists('trimName')) {
     /**
      * Extract the first or second part of a name based on the $isFirst flag.
@@ -17,3 +19,4 @@ if (!function_exists('trimName')) {
         return isset($parts[$isFirst ? 0 : 1]) ? $parts[$isFirst ? 0 : 1] : '';
     }
 }
+

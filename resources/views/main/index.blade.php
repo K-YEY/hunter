@@ -884,8 +884,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12   ">
-                            <div class="d-flex justify-content-center mt-5">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-center ">
                                 <a href="#" class="btn btn-out" type="submit">
                                     Let’s Talk
                                     <span>
