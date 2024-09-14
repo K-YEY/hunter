@@ -16,7 +16,6 @@
         color="#ffffff" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="theme-color" content="#ffffff" />
-
     <!-- Sweet Alert -->
     <link type="text/css" href="{{ asset('assets-dashboard/vendor/sweetalert2/dist/sweetalert2.min.css') }}"
         rel="stylesheet" />
@@ -26,5 +25,4 @@
 
     <!-- Volt CSS -->
     <link type="text/css" href="{{ asset('assets-dashboard/css/volt.css') }}" rel="stylesheet" />
-
 </head>

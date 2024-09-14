@@ -123,7 +123,9 @@
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
                                             <p>SubTitle: {{ $job->sub_title }}</p>
+                                            <p>Head Line For List: {{ $job->text_highlight_list }}</p>
                                             <p>List: {{ $job->list_of_text }}</p>
+                                            <p>Head Line For Description: {{ $job->text_highlight_desc }}</p>
                                             <p>Description: {{ $job->desc }}</p>
 
                                         </div>

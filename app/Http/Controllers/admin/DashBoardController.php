@@ -10,13 +10,11 @@ use Illuminate\Http\Request;
 
 class DashBoardController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $jobs = Job::count();
         $contacts = Contact::count();
         $careers = Career::count();
         return view('dashboard.index', compact('jobs', 'contacts', 'careers'));
     }
-
-
-
 }

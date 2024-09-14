@@ -3,19 +3,17 @@
 <x-dashboard.layout.head title="{{ $title }}"></x-dashboard.layout.head>
 
 <body>
-   @if(!isset($navbar))
-
-   <x-dashboard.layout.navbar></x-dashboard.layout.navbar>
-
-   @endif
+    @if (!isset($navbar))
+        <x-dashboard.layout.navbar></x-dashboard.layout.navbar>
+    @endif
 
     <main class="{{ isset($mainClass) ? '' : 'content' }}">
-        @if(!isset($navbar))
-        <x-dashboard.layout.nav></x-dashboard.layout.nav>
+        @if (!isset($navbar))
+            <x-dashboard.layout.nav></x-dashboard.layout.nav>
         @endif
         {{ $slot }}
-        @if(!isset($navbar))
-        <x-dashboard.layout.footer></x-dashboard.layout.footer>
+        @if (!isset($navbar))
+            <x-dashboard.layout.footer></x-dashboard.layout.footer>
         @endif
 
     </main>
@@ -66,22 +64,22 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
-
         function previewImage(input, target) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     $(target).attr('src', e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
-        $(document).on('change', '.image-input', function () {
+        $(document).on('change', '.image-input', function() {
             var targetImage = $(this).data('target');
             previewImage(this, targetImage);
         });
     </script>
+ 
 </body>
 
 </html>

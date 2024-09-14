@@ -28,9 +28,27 @@
                         </div>
                         <div class="row align-items-center">
                             <div class="col-md-12 mb-3">
-                                <label for="idList">List</label>
+                                <label for="idList">Head Line For List</label>
+                                <input class="form-control" id="title" type="text" placeholder="Enter your title"
+                                value="{{ isset($job) ? $job->text_highlight_list : old('text_head_line_list') }}" name="text_head_line_list"
+                                required />
+                            </div>
 
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-12 mb-3">
+                                <label for="idList">List</label>
                                 <textarea class="form-control" name="list" placeholder="title,title2,title3,....." id="idList" rows="4">{{ isset($job) ? $job->list_of_text : old('list') }}</textarea>
+                            </div>
+
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-12 mb-3">
+                                <label for="idList">Head Line For Description</label>
+
+                                <input class="form-control" id="title" type="text" placeholder="Enter your title"
+                                value="{{ isset($job) ? $job->text_highlight_desc : old('text_head_line_desc') }}" name="text_head_line_desc"
+                                required />
                             </div>
 
                         </div>

@@ -2,7 +2,7 @@
   <header class="header">
       <nav class="navbar navbar-expand-lg ">
           <div class="container">
-              <a class="navbar-brand" href="javascript:void(0)">
+              <a class="navbar-brand" href="{{ route('home.index') }}">
                   <img src="{{ asset('assets/img/logo.svg') }}" alt="logo" class="img-fluid">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -13,11 +13,11 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="javascript:void(0)">Home</a>
+                          <a class="nav-link active" aria-current="page" href="{{ route('home.index') }}">Home</a>
                       </li>
 
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                          <a class="nav-link dropdown-toggle" href="{{ route('home.service') }}" role="button" data-bs-toggle="dropdown"
                               aria-expanded="false">
                               Services
                           </a>
@@ -30,7 +30,7 @@
                                 @foreach ($dataType as $data)
                                 <div class="col-lg-3">
                                     <div class="dropdown-item-menu">
-                                        <a href="#">
+                                        <a href="{{ route('home.service', ['id' => $data->id]) }}">
                                             <span>
                                                 <img src="{{ $data->icon ? asset('storage/' . $data->icon->file) : '' }}"
                                                      alt="{{ $data->title }}" width="24" height="24">
@@ -49,10 +49,10 @@
                       </li>
 
                       <li class="nav-item">
-                          <a class="nav-link" href="#">About Us</a>
+                          <a class="nav-link" href="{{route('home.about')}}">About Us</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#">Careers</a>
+                          <a class="nav-link" href="{{ route('home.career') }}">Careers</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="{{ route('home.contact') }}">Contact Us</a>
@@ -60,7 +60,7 @@
 
                   </ul>
                   <div class="d-flex">
-                      <a href="#" class="btn btn-main" type="submit">
+                      <a href="{{ route('home.contact') }}" class="btn btn-main" type="submit">
                           Let’s Talk
                           <span>
                               <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

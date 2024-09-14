@@ -16,6 +16,8 @@ class Job extends Model
         'title',
         'sub_title',
         'list_of_text',
+        'text_highlight_desc',
+        'text_highlight_list',
         'desc',
         'status',
     ];

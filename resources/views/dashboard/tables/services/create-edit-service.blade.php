@@ -3,27 +3,63 @@
         <div class="col-12 col-xl-8">
             <div class="card card-body border-0 shadow mb-4">
                 <h2 class="h5 mb-4">Services information</h2>
-                <form action="{{ isset($service) ? route('admin.edit.service.update') : route('admin.create.service.store') }}"
+                <form
+                    action="{{ isset($service) ? route('admin.edit.service.update') : route('admin.create.service.store') }}"
                     method="POST" enctype="multipart/form-data">
                     @csrf
                     @isset($service)
                         <input type="hidden" name="service_id" value="{{ $service->id }}">
                         @endif
                         <div class="row">
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <div>
                                     <label for="title">Title</label>
                                     <input class="form-control" id="title" type="text" placeholder="Enter your title"
-                                        value="{{ isset($service) ? $service->title : old('title') }}" name="title" required />
+                                        value="{{ isset($service) ? $service->title : old('title') }}" name="title"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div>
+                                    <label for="title">Sub Title</label>
+                                    <input class="form-control" id="title" type="text" placeholder="Also your sub title"
+                                        value="{{ isset($service) ? $service->sub_title : old('sub_title') }}" name="sub_title"
+                                        required />
                                 </div>
                             </div>
 
                         </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-12 mb-3">
+                                <label for="idList">Head Line For List</label>
+                                <input class="form-control" id="title" type="text" placeholder="Enter your title"
+                                value="{{ isset($service) ? $service->text_highlight_list : old('text_head_line_list') }}" name="text_head_line_list"
+                                required />
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-12 mb-3">
+                                <label for="idList">List</label>
 
+                                <textarea class="form-control" name="list" placeholder="title,title2,title3,....." id="idList" rows="4">{{ isset($service) ? $service->list_of_text : old('list') }}</textarea>
+                            </div>
+
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-12 mb-3">
+                                <label for="idList">Head Line For Description</label>
+
+                                <input class="form-control" id="title" type="text" placeholder="Enter your title"
+                                value="{{ isset($service) ? $service->text_highlight_desc : old('text_head_line_desc') }}" name="text_head_line_desc"
+                                required />
+                            </div>
+
+                        </div>
                         <div class="row align-items-center">
                             <div class="col-md-12 mb-3">
                                 <label for="textarea">Description</label>
-                                <textarea class="form-control" name="description" placeholder="Enter your Description..." id="textarea" rows="4">{{ isset($service) ? $service->desc : old('description') }}</textarea>
+                                <textarea class="form-control" data-role="tagsinput" name="description" placeholder="Enter your Description..."
+                                    id="textarea" rows="4">{{ isset($service) ? $service->desc : old('description') }}</textarea>
                             </div>
 
                         </div>
@@ -33,7 +69,8 @@
                                 <select class="form-select" name="type" id="type"
                                     aria-label="Default select example">
                                     @if (isset($service))
-                                        <option value="{{ $service->type_id }}" selected>{{ $service->type->title }}</option>
+                                        <option value="{{ $service->type_id }}" selected>{{ $service->type->title }}
+                                        </option>
                                     @else
                                         <option selected="" value="">Type Job</option>
                                     @endif

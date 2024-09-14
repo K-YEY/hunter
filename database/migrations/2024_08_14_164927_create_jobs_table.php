@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('sub_title');
             $table->longText('list_of_text');
+            $table->longText('text_highlight_desc');
+            $table->longText('text_highlight_list');
             $table->longText('desc');
             $table->enum('status',['Publish','Draft']);
             $table->timestamps();

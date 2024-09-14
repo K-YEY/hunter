@@ -21,7 +21,18 @@
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/splide.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    @isset($loop)
+    <script>
+        var splide = new Splide('.splide', {
+           type: 'loop',
+           perPage: 5,
+           boolean: false,
+           focus: 'center',
+        });
 
+        splide.mount();
+     </script>
+    @endisset
     @isset($form)
     <script src="assets/js/datepicker.js"></script>
     <script>

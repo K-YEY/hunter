@@ -413,220 +413,41 @@
         <div class="splide" aria-label="Splide Basic HTML Example">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <li class="splide__slide">
-                        <div class="slider-card">
-                            <img src="{{ asset('assets/img/our-services/photo6.jpeg') }}')}}" alt="">
-                            <div class="overlay">
-                                <div class="content">
-                                    <span class="icon d-inline-block">
-                                        <svg width="22" height="20" viewBox="0 0 22 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M10 9H5.2C4.07989 9 3.51984 9 3.09202 9.21799C2.71569 9.40973 2.40973 9.71569 2.21799 10.092C2 10.5198 2 11.0799 2 12.2V19M20 19V4.2C20 3.0799 20 2.51984 19.782 2.09202C19.5903 1.71569 19.2843 1.40973 18.908 1.21799C18.4802 1 17.9201 1 16.8 1H13.2C12.0799 1 11.5198 1 11.092 1.21799C10.7157 1.40973 10.4097 1.71569 10.218 2.09202C10 2.51984 10 3.0799 10 4.2V19M21 19H1M13.5 5H16.5M13.5 9H16.5M13.5 13H16.5"
-                                                stroke="white" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                    <h3 class="title"> Media Buyer </h3>
-                                    <p class="desc">They achieve maximum exposure among client’s target market for
-                                        the least
-                                        amount of
-                                        spend.</p>
-                                    <div class="button">
-                                        <a href="#" class="btn-view">
-                                            <span class="text"> Hire an Architect </span>
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 11L11 1M11 1H1M11 1V11" stroke="#8438F1" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                    @foreach ($data as $service)
+                        <li class="splide__slide">
+                            <div class="slider-card">
+                                <img src="{{ asset('storage/' . $service->cover->file ?? '') }}"
+                                    alt="{{ $service->title }}">
+                                <div class="overlay">
+                                    <div class="content">
+                                        <span class="icon d-inline-block">
+                                            <img src="{{ asset('storage/' . $service->type->icon->file) }}"
+                                                alt="{{ $service->title }}" width="22" height="20">
+                                        </span>
+                                        <h3 class="title"> {{ Str::words($service->title, 6) }}
+                                        </h3>
+                                        <p class="desc"> {{ Str::words($service->desc, 8) }}
+                                        </p>
+                                        <div class="button">
+                                            <a href="{{route('home.service.single', $service->id)}}" class="btn-view">
+                                                <span class="text"> Hire an {{ $service->type->title }} </span>
+                                                <svg width="12" height="12" viewBox="0 0 12 12"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 11L11 1M11 1H1M11 1V11" stroke="#8438F1"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
 
-                                            </svg>
-                                        </a>
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
+
                                 </div>
-
                             </div>
-                        </div>
-                    </li>
-                    <li class="splide__slide">
-                        <div class="slider-card">
-                            <img src="{{ asset('assets/img/our-services/photo2.jpeg') }}')}}" alt="">
-                            <div class="overlay">
-                                <div class="content">
-                                    <span class="icon d-inline-block">
-                                        <svg width="22" height="20" viewBox="0 0 22 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M10 9H5.2C4.07989 9 3.51984 9 3.09202 9.21799C2.71569 9.40973 2.40973 9.71569 2.21799 10.092C2 10.5198 2 11.0799 2 12.2V19M20 19V4.2C20 3.0799 20 2.51984 19.782 2.09202C19.5903 1.71569 19.2843 1.40973 18.908 1.21799C18.4802 1 17.9201 1 16.8 1H13.2C12.0799 1 11.5198 1 11.092 1.21799C10.7157 1.40973 10.4097 1.71569 10.218 2.09202C10 2.51984 10 3.0799 10 4.2V19M21 19H1M13.5 5H16.5M13.5 9H16.5M13.5 13H16.5"
-                                                stroke="white" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                    <h3 class="title"> Architects </h3>
-                                    <p class="desc">
-                                        Our architects create functional and beautiful spaces.
-                                    </p>
-                                    <div class="button">
-                                        <a href="#" class="btn-view">
-                                            <span class="text"> Hire an Architect </span>
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 11L11 1M11 1H1M11 1V11" stroke="#8438F1" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-                    <li class="splide__slide">
-                        <div class="slider-card">
-                            <img src="{{ asset('assets/img/our-services/photo14.jpeg') }}')}}" alt="">
-                            <div class="overlay">
-                                <div class="content">
-                                    <span class="icon d-inline-block">
-                                        <svg width="22" height="20" viewBox="0 0 22 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M10 9H5.2C4.07989 9 3.51984 9 3.09202 9.21799C2.71569 9.40973 2.40973 9.71569 2.21799 10.092C2 10.5198 2 11.0799 2 12.2V19M20 19V4.2C20 3.0799 20 2.51984 19.782 2.09202C19.5903 1.71569 19.2843 1.40973 18.908 1.21799C18.4802 1 17.9201 1 16.8 1H13.2C12.0799 1 11.5198 1 11.092 1.21799C10.7157 1.40973 10.4097 1.71569 10.218 2.09202C10 2.51984 10 3.0799 10 4.2V19M21 19H1M13.5 5H16.5M13.5 9H16.5M13.5 13H16.5"
-                                                stroke="white" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                    <h3 class="title"> Video Editors </h3>
-                                    <p class="desc">
-                                        With expert video editors, you can get rid of the extra stress. They can give a
-                                        creative flair to your content.
-                                    </p>
-                                    <div class="button">
-                                        <a href="#" class="btn-view">
-                                            <span class="text"> Hire an Architect </span>
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 11L11 1M11 1H1M11 1V11" stroke="#8438F1" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-                    <li class="splide__slide">
-                        <div class="slider-card">
-                            <img src="{{ asset('assets/img/our-services/photo1.jpeg') }}')}}" alt="">
-                            <div class="overlay">
-                                <div class="content">
-                                    <span class="icon d-inline-block">
-                                        <svg width="22" height="16" viewBox="0 0 22 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M21 4.93137C21 4.32555 21 4.02265 20.8802 3.88238C20.7763 3.76068 20.6203 3.69609 20.4608 3.70865C20.2769 3.72312 20.0627 3.93731 19.6343 4.36569L16 8L19.6343 11.6343C20.0627 12.0627 20.2769 12.2769 20.4608 12.2914C20.6203 12.3039 20.7763 12.2393 20.8802 12.1176C21 11.9774 21 11.6744 21 11.0686V4.93137Z"
-                                                stroke="white" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                            <path
-                                                d="M1 5.8C1 4.11984 1 3.27976 1.32698 2.63803C1.6146 2.07354 2.07354 1.6146 2.63803 1.32698C3.27976 1 4.11984 1 5.8 1H11.2C12.8802 1 13.7202 1 14.362 1.32698C14.9265 1.6146 15.3854 2.07354 15.673 2.63803C16 3.27976 16 4.11984 16 5.8V10.2C16 11.8802 16 12.7202 15.673 13.362C15.3854 13.9265 14.9265 14.3854 14.362 14.673C13.7202 15 12.8802 15 11.2 15H5.8C4.11984 15 3.27976 15 2.63803 14.673C2.07354 14.3854 1.6146 13.9265 1.32698 13.362C1 12.7202 1 11.8802 1 10.2V5.8Z"
-                                                stroke="white" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-
-                                    </span>
-                                    <h3 class="title">Graphic Designers</h3>
-                                    <p class="desc">
-                                        Our skilled graphic designers add emotional value to your business with stunning
-                                        visuals.
-                                    </p>
-                                    <div class="button">
-                                        <a href="#" class="btn-view">
-                                            <span class="text"> Hire an Architect </span>
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 11L11 1M11 1H1M11 1V11" stroke="#8438F1" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-                    <li class="splide__slide">
-                        <div class="slider-card">
-                            <img src="{{ asset('assets/img/our-services/photo15.jpeg') }}')}}" alt="">
-                            <div class="overlay">
-                                <div class="content">
-                                    <span class="icon d-inline-block">
-                                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M3.44202 14.6852L3.05221 15.6061H3.05221L3.44202 14.6852ZM3.44202 7.31476L3.83182 8.23566L3.44202 7.31476ZM4.18979 7.18265L4 8.16447H4L4.18979 7.18265ZM4.83018 7.60698L5.66036 7.04948L4.83018 7.60698ZM4.18979 14.8174L4 13.8355H4L4.18979 14.8174ZM4.83018 14.393L4 13.8355L4 13.8355L4.83018 14.393ZM16.558 14.6852L16.9478 15.6061L16.558 14.6852ZM16.558 7.31476L16.1682 8.23566L16.558 7.31476ZM15.8102 7.18265L16 8.16447L15.8102 7.18265ZM15.1698 7.60698L14.3396 7.04948L15.1698 7.60698ZM15.8102 14.8174L16 13.8355H16L15.8102 14.8174ZM15.1698 14.393L16 13.8355L16 13.8355L15.1698 14.393ZM18 15C18 14.4477 17.5523 14 17 14C16.4477 14 16 14.4477 16 15H18ZM10 17C9.44771 17 9 17.4477 9 18C9 18.5523 9.44771 19 10 19V17ZM3.83182 13.7643C2.75348 13.3079 2 12.2408 2 11H0C0 13.0722 1.2603 14.8476 3.05221 15.6061L3.83182 13.7643ZM2 11C2 9.75921 2.75348 8.69211 3.83182 8.23566L3.05221 6.39387C1.2603 7.15236 0 8.92785 0 11H2ZM6 13.4V8.6H4V13.4H6ZM3.83182 8.23566C3.91164 8.20187 3.957 8.18286 3.99483 8.16864C4.02901 8.15579 4.03609 8.15504 4.02872 8.15664C4.01754 8.15908 4.00106 8.16115 3.98528 8.16109C3.97194 8.16104 3.97407 8.15946 4 8.16447L4.37957 6.20082C4.11812 6.15028 3.86737 6.1449 3.60313 6.20245C3.38124 6.25077 3.17674 6.34115 3.05221 6.39387L3.83182 8.23566ZM6 8.6C6 8.18756 6.03193 7.60281 5.66036 7.04948L4 8.16447C4.00008 8.16459 3.99806 8.16157 3.99514 8.15584C3.99218 8.15002 3.98949 8.14376 3.98736 8.13786C3.98287 8.12537 3.98476 8.12514 3.98802 8.149C3.99172 8.17597 3.99556 8.22087 3.99772 8.29973C3.99992 8.37967 4 8.47275 4 8.6H6ZM4 8.16447C3.98504 8.16158 3.9732 8.15863 3.96473 8.15631C3.9562 8.15396 3.94996 8.15193 3.94612 8.15061C3.93885 8.1481 3.93736 8.14716 3.94154 8.14909C3.94547 8.1509 3.95233 8.1543 3.96159 8.15951C3.97075 8.16468 3.98084 8.17082 3.99123 8.17771C4.00162 8.18459 4.01121 8.19149 4.01954 8.19791C4.02795 8.2044 4.03375 8.2094 4.03695 8.21231C4.04037 8.21541 4.03891 8.21441 4.03377 8.20868C4.03105 8.20566 4.02676 8.20071 4.02127 8.19377C4.01583 8.18688 4.0085 8.17713 4 8.16447L5.66036 7.04948C5.49802 6.80774 5.26925 6.62532 5.09594 6.51049C4.92264 6.39566 4.66548 6.25609 4.37957 6.20082L4 8.16447ZM3.05221 15.6061C3.17674 15.6588 3.38124 15.7492 3.60313 15.7976C3.86737 15.8551 4.11812 15.8497 4.37958 15.7992L4 13.8355C3.97407 13.8405 3.97194 13.839 3.98528 13.8389C4.00106 13.8389 4.01753 13.8409 4.02872 13.8434C4.03609 13.845 4.02901 13.8442 3.99483 13.8314C3.957 13.8171 3.91164 13.7981 3.83182 13.7643L3.05221 15.6061ZM4 13.4C4 13.5272 3.99992 13.6203 3.99772 13.7003C3.99556 13.7791 3.99172 13.824 3.98802 13.851C3.98476 13.8749 3.98287 13.8746 3.98736 13.8621C3.98949 13.8562 3.99218 13.85 3.99514 13.8442C3.99806 13.8384 4.00008 13.8354 4 13.8355L5.66036 14.9505C6.03194 14.3972 6 13.8124 6 13.4H4ZM4.37957 15.7992C4.66548 15.7439 4.92264 15.6043 5.09594 15.4895C5.26925 15.3747 5.49802 15.1923 5.66036 14.9505L4 13.8355C4.0085 13.8229 4.01583 13.8131 4.02127 13.8062C4.02676 13.7993 4.03105 13.7943 4.03377 13.7913C4.03891 13.7856 4.04037 13.7846 4.03695 13.7877C4.03375 13.7906 4.02795 13.7956 4.01954 13.8021C4.01121 13.8085 4.00162 13.8154 3.99123 13.8223C3.98084 13.8292 3.97075 13.8353 3.96159 13.8405C3.95233 13.8457 3.94547 13.8491 3.94154 13.8509C3.93736 13.8528 3.93885 13.8519 3.94612 13.8494C3.94996 13.8481 3.9562 13.846 3.96473 13.8437C3.9732 13.8414 3.98504 13.8384 4 13.8355L4.37957 15.7992ZM16.9478 15.6061C18.7397 14.8476 20 13.0722 20 11H18C18 12.2408 17.2465 13.3079 16.1682 13.7643L16.9478 15.6061ZM20 11C20 8.92785 18.7397 7.15236 16.9478 6.39387L16.1682 8.23566C17.2465 8.69211 18 9.75921 18 11H20ZM16 13.4V8.6H14V13.4H16ZM16.9478 6.39387C16.8233 6.34115 16.6188 6.25077 16.3969 6.20245C16.1326 6.1449 15.8819 6.15028 15.6204 6.20082L16 8.16447C16.0259 8.15946 16.0281 8.16104 16.0147 8.16109C15.9989 8.16115 15.9825 8.15908 15.9713 8.15664C15.9639 8.15504 15.971 8.15579 16.0052 8.16864C16.043 8.18286 16.0884 8.20187 16.1682 8.23566L16.9478 6.39387ZM16 8.6C16 8.47275 16.0001 8.37967 16.0023 8.29973C16.0044 8.22087 16.0083 8.17596 16.012 8.149C16.0152 8.12514 16.0171 8.12537 16.0126 8.13786C16.0105 8.14376 16.0078 8.15002 16.0049 8.15584C16.0019 8.16157 15.9999 8.16459 16 8.16447L14.3396 7.04948C13.9681 7.60281 14 8.18756 14 8.6H16ZM15.6204 6.20082C15.3345 6.25609 15.0774 6.39566 14.9041 6.51049C14.7308 6.62532 14.502 6.80774 14.3396 7.04948L16 8.16447C15.9915 8.17713 15.9842 8.18688 15.9787 8.19377C15.9732 8.20071 15.9689 8.20566 15.9662 8.20868C15.9611 8.21441 15.9596 8.21541 15.963 8.21231C15.9662 8.2094 15.972 8.2044 15.9805 8.19791C15.9888 8.19149 15.9984 8.1846 16.0088 8.17771C16.0192 8.17082 16.0292 8.16468 16.0384 8.15951C16.0477 8.1543 16.0545 8.1509 16.0585 8.14909C16.0626 8.14716 16.0612 8.1481 16.0539 8.15061C16.05 8.15193 16.0438 8.15396 16.0353 8.15631C16.0268 8.15863 16.015 8.16158 16 8.16447L15.6204 6.20082ZM16.1682 13.7643C16.0884 13.7981 16.043 13.8171 16.0052 13.8314C15.971 13.8442 15.9639 13.845 15.9713 13.8434C15.9825 13.8409 15.9989 13.8389 16.0147 13.8389C16.0281 13.839 16.0259 13.8405 16 13.8355L15.6204 15.7992C15.8819 15.8497 16.1326 15.8551 16.3969 15.7976C16.6188 15.7492 16.8233 15.6588 16.9478 15.6061L16.1682 13.7643ZM14 13.4C14 13.8124 13.9681 14.3972 14.3396 14.9505L16 13.8355C15.9999 13.8354 16.0019 13.8384 16.0049 13.8442C16.0078 13.85 16.0105 13.8562 16.0126 13.8621C16.0171 13.8746 16.0152 13.8749 16.012 13.851C16.0083 13.824 16.0044 13.7791 16.0023 13.7003C16.0001 13.6203 16 13.5272 16 13.4H14ZM16 13.8355C16.015 13.8384 16.0268 13.8414 16.0353 13.8437C16.0438 13.846 16.05 13.8481 16.0539 13.8494C16.0612 13.8519 16.0626 13.8528 16.0585 13.8509C16.0545 13.8491 16.0477 13.8457 16.0384 13.8405C16.0292 13.8353 16.0192 13.8292 16.0088 13.8223C15.9984 13.8154 15.9888 13.8085 15.9805 13.8021C15.972 13.7956 15.9662 13.7906 15.963 13.7877C15.9596 13.7846 15.9611 13.7856 15.9662 13.7913C15.9689 13.7943 15.9732 13.7993 15.9787 13.8062C15.9842 13.8131 15.9915 13.8229 16 13.8355L14.3396 14.9505C14.502 15.1923 14.7308 15.3747 14.9041 15.4895C15.0774 15.6043 15.3345 15.7439 15.6204 15.7992L16 13.8355ZM4 8C4 4.68629 6.68629 2 10 2V0C5.58172 0 2 3.58172 2 8H4ZM10 2C13.3137 2 16 4.68629 16 8H18C18 3.58172 14.4183 0 10 0V2ZM16 15V16H18V15H16ZM15 17H10V19H15V17ZM16 16C16 16.5523 15.5523 17 15 17V19C16.6569 19 18 17.6569 18 16H16Z"
-                                                fill="white" />
-                                        </svg>
+                        </li>
+                    @endforeach
 
 
-                                    </span>
-                                    <h3 class="title"> Virtual Assistants </h3>
-                                    <p class="desc">
-                                        Our virtual assistants are highly organized and good at communication.
-                                    </p>
-                                    <div class="button">
-                                        <a href="#" class="btn-view">
-                                            <span class="text"> Hire an Architect </span>
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 11L11 1M11 1H1M11 1V11" stroke="#8438F1" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-                    <li class="splide__slide">
-                        <div class="slider-card">
-                            <img src="{{ asset('assets/img/our-services/photo17.jpeg') }}" alt="">
-                            <div class="overlay">
-                                <div class="content">
-                                    <span class="icon d-inline-block">
-                                        <svg width="22" height="20" viewBox="0 0 22 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M10 9H5.2C4.07989 9 3.51984 9 3.09202 9.21799C2.71569 9.40973 2.40973 9.71569 2.21799 10.092C2 10.5198 2 11.0799 2 12.2V19M20 19V4.2C20 3.0799 20 2.51984 19.782 2.09202C19.5903 1.71569 19.2843 1.40973 18.908 1.21799C18.4802 1 17.9201 1 16.8 1H13.2C12.0799 1 11.5198 1 11.092 1.21799C10.7157 1.40973 10.4097 1.71569 10.218 2.09202C10 2.51984 10 3.0799 10 4.2V19M21 19H1M13.5 5H16.5M13.5 9H16.5M13.5 13H16.5"
-                                                stroke="white" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                    <h3 class="title"> Media Buyer </h3>
-                                    <p class="desc">They achieve maximum exposure among client’s target market for
-                                        the least
-                                        amount of
-                                        spend.</p>
-                                    <div class="button">
-                                        <a href="#" class="btn-view">
-                                            <span class="text"> Hire an Architect </span>
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 11L11 1M11 1H1M11 1V11" stroke="#8438F1" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
             <div class="splide__arrows splide__arrows--ltr">
@@ -651,7 +472,7 @@
                 </button>
             </div>
             <div class="viewers">
-                <a href="#" class="btn btn-view-more">
+                <a href="{{ route('home.service') }}" class="btn btn-view-more">
                     View Full List
                 </a>
             </div>
@@ -678,7 +499,7 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="row justify-content-center">
-                        <div class="col-md-6  ">
+                        <div class="col-md-6">
                             <div class="card text-center ms-auto">
                                 <h5 class="header-card">Well-Trained, Hard-working College Graduates</h5>
                                 <p class="card-body">Our strict vetting process gives you the best of the best</p>
@@ -725,7 +546,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6  ">
+                        <div class="col-md-6">
                             <div class="card text-center">
                                 <h5 class="header-card">Skilled English Speakers</h5>
                                 <p class="card-body">Every individual is thoroughly vetted to verify language skills
@@ -886,7 +707,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="d-flex justify-content-center ">
-                                <a href="#" class="btn btn-out" type="submit">
+                                <a href="{{ route('home.contact') }}" class="btn btn-out" type="submit">
                                     Let’s Talk
                                     <span>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -978,7 +799,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center mt-5">
-                <a href="#" class="btn btn-main" type="submit">
+                <a href="{{ route('home.contact') }}" class="btn btn-main" type="submit">
                     Let’s Talk
                     <span>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

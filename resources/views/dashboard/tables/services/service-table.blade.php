@@ -122,9 +122,11 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
-
-                                           <p>Description: {{ $service->desc }}</p>
-
+                                            <p>SubTitle: {{ $service->sub_title }}</p>
+                                            <p>Head Line For List: {{ $service->text_highlight_list }}</p>
+                                            <p>List: {{ $service->list_of_text }}</p>
+                                            <p>Head Line For Description: {{ $service->text_highlight_desc }}</p>
+                                            <p>Description: {{ $service->desc }}</p>
                                         </div>
                                     </div>
                                 </div>

@@ -13,7 +13,11 @@ class Service extends Model
     protected $fillable = [
         'type_id',
         'cover_id',
+        'list_of_text',
+        'text_highlight_desc',
+        'text_highlight_list',
         'title',
+        'sub_title',
         'desc',
         'status',
     ];
