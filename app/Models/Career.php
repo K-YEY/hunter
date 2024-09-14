@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,6 +12,7 @@ class Career extends Model
 
     // Define the fillable attributes
     protected $fillable = [
+        'job_id',
         'name',
         'email',
         'phone',
@@ -34,5 +36,9 @@ class Career extends Model
 
         return $country ? $country['name'] : null;
     }
+    public function getJob()
+    {
 
+        return $this->belongsTo(Job::class, 'job_id');
+    }
 }

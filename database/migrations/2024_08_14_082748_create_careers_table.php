@@ -13,17 +13,19 @@ return new class extends Migration
     {
         Schema::create('careers', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('job_id')->unsigned();
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
             $table->integer('country_code');
             $table->string('education');
-            $table->enum('is_job',['True','False']);
-            $table->enum('is_remote',['True','False']);
+            $table->enum('is_job', ['True', 'False']);
+            $table->enum('is_remote', ['True', 'False']);
             $table->string('hear_us');
             $table->string('resume');
             $table->string('profile');
-            $table->enum('status',['Accepted','Rejected','Reviewing']);
+            $table->enum('status', ['Accepted', 'Rejected', 'Reviewing']);
             $table->string('ip');
             $table->timestamps();
         });

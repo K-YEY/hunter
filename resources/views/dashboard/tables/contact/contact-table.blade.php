@@ -25,7 +25,7 @@
             <tbody>
                 @if ($contacts->count() == 0)
                     <tr>
-                        <td colspan="4">
+                        <td colspan="10">
                             <div class="alert alert-info" role="alert">
                                 No contacts found
                             </div>

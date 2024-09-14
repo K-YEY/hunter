@@ -1,4 +1,4 @@
-<x-layout.layout loop="true">
+<x-layout.layout loop="true" title="Careers">
     <!-- hero -->
     <section class="hero-services pb-0">
         <div class="container">

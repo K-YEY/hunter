@@ -1,4 +1,4 @@
-<x-layout.layout body="true">
+<x-layout.layout body="true" title="Contact Us">
     <section class="hero-services contact">
         <div class="container">
             <div class="row  align-items-center justify-content-center">
@@ -77,8 +77,8 @@
                             <h2 class="title-form">Enter Details</h2>
                         </div>
                         <div class="form-details">
-                            <form action="#">
-
+                            <form action="{{ route('home.careerStore') }}" method="POST">
+                                @csrf
                                 <div class="d-flex gap-2">
                                     <div class="mb-3 w-100 position-relative">
                                         <input type="text" class="form-control rounded-pill pe-3" id="firstName"

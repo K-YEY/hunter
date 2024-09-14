@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{ asset('assets/ico.png') }}" type="image/png">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <title>{{ $title ?? 'Remote Hire' }}</title>
@@ -53,6 +55,22 @@
             })()
         });
     </script>
+    @endisset
+    @isset($apply)
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#hear_us').on('change', function() {
+                if ($(this).val() === 'other') {
+                    $('#other').show();
+                } else {
+                    $('#other').hide();
+                }
+            });
+        });
+    </script>
+
     @endisset
 </body>
 

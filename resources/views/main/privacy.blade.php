@@ -1,4 +1,4 @@
-<x-layout.layout loop="true">
+<x-layout.layout loop="true" title="Privacy Policy">
 
     <!-- hero -->
     <!-- hero -->

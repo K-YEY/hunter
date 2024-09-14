@@ -1,4 +1,4 @@
-<x-layout.layout>
+<x-layout.layout title="Services">
     <section class="hero-services">
         <div class="container">
             <div class="row  align-items-center justify-content-center">

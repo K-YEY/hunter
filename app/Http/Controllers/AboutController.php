@@ -15,4 +15,5 @@ class AboutController extends Controller
         return view('main.privacy');
 
     }
+
 }

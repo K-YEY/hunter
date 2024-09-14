@@ -13,5 +13,14 @@ class HomeController extends Controller
 
         return view('main.index', compact('data'));
     }
+    public function done()
+    {
+        $job_id = session('job_id');
+        if (!$job_id) {
+            return redirect()->route('home.career')->withErrors(['error' => 'Job ID not found in session.']);
+        }
 
+        session()->forget('job_id');
+        return view('main.apply');
+    }
 }

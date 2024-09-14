@@ -1,4 +1,4 @@
-<x-layout.layout>
+<x-layout.layout title="{{ $data->title }}">
 
 
     <section class="accountant">
@@ -22,7 +22,7 @@
 
                     {{ Route::currentRouteName() == 'home.service.single' ? 'Services' : 'Career' }}</a>
                 <a class="nav-link"
-                    href="{{ Route::currentRouteName() == 'home.service.single' ? route('home.service', ['id' => $data->type_id]) : route('home.career', ['id' => $data->type_id]) }}">{{$data->type->title}}</a>
+                    href="{{ Route::currentRouteName() == 'home.service.single' ? route('home.service', ['id' => $data->type_id]) : route('home.career', ['id' => $data->type_id]) }}">{{ $data->type->title }}</a>
             </nav>
             <div class="row justify-content-center align-items-center">
                 <div class="col-xl-5">
@@ -45,7 +45,6 @@
                                 who make sure your financial operations are precise and insightful.
                                 Our services help keep your financial processes running smoothly,
                                 follow all the rules, and support your business goals</p>
-
                         </div>
                         @if ($data->list_of_text != '')
                             <ul>
@@ -91,8 +90,28 @@
 
                             </ul>
                         @endif
+                        @if (Route::currentRouteName() == 'home.career.single')
+                        <div class="col-xl-3 col-md-3 mt-5">
+                            <div class="lets">
+                                <form action="{{ route('home.jobId') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $data->id }}">
+                                    <button class="btn btn-main" type="submit">
+                                    Applay now
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="#8438F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                          </svg>
+                                    </span>
+                                </button></form>
+
+                            </div>
+                        </div>
+                        @endif
                     </div>
+
                 </div>
+
             </div>
         </div>
     </section>

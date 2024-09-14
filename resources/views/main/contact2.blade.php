@@ -1,4 +1,4 @@
-<x-layout.layout form="true" body="true">
+<x-layout.layout form="true" body="true" title="Contact Us">
 
     <section class="hero-services applyForm contact">
         <div class="container">
@@ -84,7 +84,7 @@
                                     <form action="#">
 
                                         <input type="hidden" id="constrained" data-inline="true" data-multiple="false"
-                                            data-open-on="today" data-time="false">
+                                            data-open-on="tomorrow" data-time="true">
                                         <button type="submit" class="btn rounded-pill px-4 mx-auto d-block mt-3 mb-5">
                                             Schedule Meeting
 

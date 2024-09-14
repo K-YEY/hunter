@@ -1,4 +1,4 @@
-<x-layout.layout>
+<x-layout.layout title="About Us">
 
     <!-- hero -->
     <section class="hero about">
@@ -554,5 +554,5 @@
             </div>
         </div>
     </section>
- 
+
 </x-layout.layout>
