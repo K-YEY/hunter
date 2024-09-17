@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-xl-2 col-md-3">
                     <div class="lets">
-                        <a href="#" class="btn btn-main">
+                        <a href="{{ route('home.contact') }}" class="btn btn-main">
                             Let’s Talk
                             <span>
                                 <svg width="20" height="20" viewBox="0 0 20 20"

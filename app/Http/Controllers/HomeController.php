@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data = Service::with('type')->where('status', operator: 'publish')->take(8)->get();
+        $data = Service::with('type')->where('status', 'publish')->take(8)->get();
 
         return view('main.index', compact('data'));
     }

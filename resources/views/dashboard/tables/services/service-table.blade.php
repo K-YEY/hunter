@@ -22,7 +22,7 @@
             <tbody>
                 @if ($services->count() == 0)
                     <tr>
-                        <td colspan="4">
+                        <td colspan="6">
                             <div class="alert alert-info" role="alert">
                                 No service found
                             </div>

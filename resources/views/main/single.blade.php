@@ -1,6 +1,4 @@
 <x-layout.layout title="{{ $data->title }}">
-
-
     <section class="accountant">
         <div class="container">
             <nav class="nav">
@@ -91,22 +89,26 @@
                             </ul>
                         @endif
                         @if (Route::currentRouteName() == 'home.career.single')
-                        <div class="col-xl-3 col-md-3 mt-5">
-                            <div class="lets">
-                                <form action="{{ route('home.jobId') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $data->id }}">
-                                    <button class="btn btn-main" type="submit">
-                                    Applay now
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
-                                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="#8438F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                          </svg>
-                                    </span>
-                                </button></form>
+                            <div class="col-xl-3 col-md-3 mt-5">
+                                <div class="lets">
+                                    <form action="{{ route('home.jobId') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{ $data->id }}">
+                                        <button class="btn btn-main" type="submit">
+                                            Applay now
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="white">
+                                                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="#8438F1"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </form>
 
+                                </div>
                             </div>
-                        </div>
                         @endif
                     </div>
 
@@ -175,12 +177,9 @@
                                 Cost Efficiency
                             </h3>
                             <p>For small businesses with limited resources, hiring a professional virtual bookkeeper is
-                                a
-                                cost-effective alternative to a full-time traditional bookkeeper, ensuring your finances
-                                are
-                                managed efficiently and remotely. Outsourcing accounting services helps you cut overhead
-                                costs,
-                                including salaries, benefits, office space...</p>
+                                a cost-effective alternative to a full-time traditional bookkeeper, ensuring your
+                                finances are managed efficiently and remotely. Outsourcing accounting services helps you
+                                cut overhead costs, including salaries, benefits, office space...</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -224,15 +223,12 @@
                                 </defs>
                             </svg>
                             <h3>
-                                Cost Efficiency
+                                Access to Expertise
                             </h3>
-                            <p>For small businesses with limited resources, hiring a professional virtual bookkeeper is
-                                a
-                                cost-effective alternative to a full-time traditional bookkeeper, ensuring your finances
-                                are
-                                managed efficiently and remotely. Outsourcing accounting services helps you cut overhead
-                                costs,
-                                including salaries, benefits, office space...</p>
+                            <p>Remote Hiring Hunt gives you access to seasoned professionals with specialized knowledge.
+                                These experts are well-versed in the latest accounting standards and regulations,
+                                ensuring your financial records are accurate and compliant, and protecting you from
+                                potential legal issues and penalties</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -276,15 +272,12 @@
                                 </defs>
                             </svg>
                             <h3>
-                                Cost Efficiency
+                                Scalability
                             </h3>
-                            <p>For small businesses with limited resources, hiring a professional virtual bookkeeper is
-                                a
-                                cost-effective alternative to a full-time traditional bookkeeper, ensuring your finances
-                                are
-                                managed efficiently and remotely. Outsourcing accounting services helps you cut overhead
-                                costs,
-                                including salaries, benefits, office space...</p>
+                            <p>Outsourced accounting services offer the flexibility to adjust the level of service based
+                                on your business needs. Whether experiencing rapid growth or seasonal fluctuations, you
+                                can scale up or down without the hassle of hiring or laying off staff, ensuring you
+                                always have the right level of support</p>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -328,15 +321,14 @@
                                 </defs>
                             </svg>
                             <h3>
-                                Cost Efficiency
+                                Enhanced Focus
                             </h3>
                             <p>For small businesses with limited resources, hiring a professional virtual bookkeeper is
-                                a
-                                cost-effective alternative to a full-time traditional bookkeeper, ensuring your finances
-                                are
-                                managed efficiently and remotely. Outsourcing accounting services helps you cut overhead
-                                costs,
-                                including salaries, benefits, office space...</p>
+                                a cost-effective alternative to a full-time traditional bookkeeper, ensuring your
+                                finances are managed efficiently and remotely. Outsourcing accounting services helps you
+                                cut overhead costs, including salaries, benefits, office space...
+
+                            </p>
                         </div>
                     </div>
                 </div>

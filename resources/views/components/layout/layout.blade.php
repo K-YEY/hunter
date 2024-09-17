@@ -39,20 +39,9 @@
     <script src="assets/js/datepicker.js"></script>
     <script>
         var constrained = new Datepicker('#constrained', {
-
-            // 10 days in the past
-            min: (function () {
-                var date = new Date();
-                date.setDate(date.getDate() - 10);
-                return date;
-            })(),
-
-            // 10 days in the future
-            max: (function () {
-                var date = new Date();
-                date.setDate(date.getDate() + 10);
-                return date;
-            })()
+            showPreviousNext: true,
+            prevArrow: '&lt;',
+            nextArrow: '&gt;',
         });
     </script>
     @endisset
@@ -72,6 +61,6 @@
     </script>
 
     @endisset
-</body>
 
+</body>
 </html>

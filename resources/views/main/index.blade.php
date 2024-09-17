@@ -90,7 +90,7 @@
                                 </svg>
 
                             </span>
-                            Slash costs by 50% & double your profits
+                            No hidden fees
                         </li>
                         <li class="list-item">
                             <span class="icon">
@@ -101,8 +101,7 @@
                                 </svg>
 
                             </span>
-                            Slash costs by 50% & double your profits
-                        </li>
+                            Renew contracts month-by-month                        </li>
                         <li class="list-item">
                             <span class="icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -112,8 +111,7 @@
                                 </svg>
 
                             </span>
-                            Slash costs by 50% & double your profits
-                        </li>
+                            Get well-trained professionals work in your timezone                        </li>
                         <li class="list-item">
                             <span class="icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -123,11 +121,11 @@
                                 </svg>
 
                             </span>
-                            Slash costs by 50% & double your profits
+                            24/7 customer care
                         </li>
                     </ul>
                     <div class="btn-recruitment">
-                        <a href="#" class="btn btn-main btn-recruitment-1">
+                        <a href="{{ route('home.contact') }}" class="btn btn-main btn-recruitment-1">
                             Let’s Talk
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 use App\Models\Constant;
-use App\Models\Contact; // Ensure you import the Contact model
+use App\Models\Contact; 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ZoomMeetingLink;
 
