@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Admin\CommonType;
+use Illuminate\Support\Facades\File;
 
 if (!function_exists('trimName')) {
     /**
@@ -20,3 +20,11 @@ if (!function_exists('trimName')) {
     }
 }
 
+if (!function_exists('countries')) {
+function countries(){
+    $json = File::get(storage_path('app/public/countries.json'));
+    $countries = json_decode($json);
+    return $countries;
+}
+
+}

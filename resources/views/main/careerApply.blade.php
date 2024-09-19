@@ -86,6 +86,7 @@
                             </svg>
                             <select name="country" id="country" class="w-100 pe-3 rounded-pill py-2">
                                 <option value="">Country</option>
+                                @php $countries = countries(); @endphp
                                 @foreach ($countries as $country)
                                     <option value="{{ $country->code }}">{{ $country->name }}</option>
                                 @endforeach

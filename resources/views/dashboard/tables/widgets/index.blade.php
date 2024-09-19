@@ -1,11 +1,9 @@
 <x-dashboard.layout.layout title="Dashboard">
 
-
-    <x-dashboard.breadcrumb.breadcrumb title="Widget"
+    <x-dashboard.breadcrumb.breadcrumb title="FAQ"
         subTitle="However difficult life may seem, there is always something you can do and succeed at."
-        page="Widget"></x-dashboard.breadcrumb.breadcrumb>
-    <x-dashboard.searchbar.searchtable action="{{ route('admin.widget.table') }}" value="{{ request()->input('search') }}"
-        placeholder="Widget"></x-dashboard.searchbar.searchtable>
+        page="FAQ"></x-dashboard.breadcrumb.breadcrumb>
+
 
     <div class="card card-body border-0 shadow table-wrapper table-responsive">
         <table class="table table-hover">
@@ -13,35 +11,40 @@
                 <tr>
                     <th class="border-gray-200">#</th>
                     <th class="border-gray-200">Title</th>
+                    <th class="border-gray-200">Content</th>
                     <th class="border-gray-200">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @if ($widgets->count() == 0)
+                @if ($faqs->count() == 0)
                     <tr>
-                        <td colspan="10">
+                        <td colspan="4">
                             <div class="alert alert-info" role="alert">
-                                No Widgets found
+                                No faqs found
                             </div>
                         </td>
                     </tr>
                 @endif
-                @foreach ($widgets as $widget)
+                @foreach ($faqs as $widget)
                     <tr>
                         <td>
                             <a href="#" class="fw-bold">{{ $widget->id }}</a>
                         </td>
                         <td>
-                            <span class="fw-normal">{{ $widget->title }}</span>
+                            <span class="fw-normal">{{ Str::limit($widget->question, 30) }}</span>
                         </td>
-
+                        <td>
+                            <span class="fw-normal">{{ Str::limit($widget->answer, 50) }}</span>
+                        </td>
 
                         <td>
                             <div class="btn-group">
 
                                 {{-- edit --}}
-                                <a href="{{ route('admin.service.edit', $widget->id) }}"> <svg class="icon icon-xs text-gray-600" fill="none"
-                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <a href="javascript:void(0)" data-bs-toggle="modal"
+                                    data-bs-target="#modal-default-{{ $widget->id }}">
+                                    <svg class="icon icon-xs text-gray-600" fill="none" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
                                         <path opacity="0.5"
                                             d="M22 10.5V12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2H13.5"
                                             stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" />
@@ -54,14 +57,46 @@
                                     </svg>
                                 </a>
 
+                                <!-- Modal Content -->
+                                <div class="modal fade" id="modal-default-{{ $widget->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <form action="{{ route('admin.update.faq') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $widget->id }}">
+                                                <div class="modal-header">
+                                                    <h2 class="h6 modal-title"> Edit FAQ</h2>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
 
-
-
+                                                <div class="modal-body">
+                                                    <div class="form-group mb-3">
+                                                        <label for="question">Question</label>
+                                                        <input type="text" name="question" id="question" class="form-control"
+                                                            value="{{ $widget->question }}" required>
+                                                    </div>
+                                                    <div class="form-group mb-3">
+                                                        <label for="answer">Answer</label>
+                                                        <textarea name="answer" id="answer" class="form-control" rows="3"
+                                                            required>{{ $widget->answer }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-success">Save</button>
+                                                    <button type="button" class="btn btn-link text-gray-600 ms-auto"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal Content -->
 
                             </div>
                         </td>
                     </tr>
-
                 @endforeach
             </tbody>
         </table>
@@ -71,36 +106,32 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination mb-0">
                     <!-- Previous Page Link -->
-                    @if ($widgets->onFirstPage())
+                    @if ($faqs->onFirstPage())
                         <li class="page-item disabled"><span class="page-link">Previous</span></li>
                     @else
-                        <li class="page-item"><a class="page-link" href="{{ $widgets->previousPageUrl() }}">Previous</a>
-                        </li>
+                        <li class="page-item"><a class="page-link" href="{{ $faqs->previousPageUrl() }}">Previous</a></li>
                     @endif
 
                     <!-- Pagination Elements -->
-                    @foreach ($widgets->links()->elements as $element)
+                    @foreach ($faqs->links()->elements as $element)
                         @if (is_string($element))
                             <li class="page-item disabled"><span class="page-link">{{ $element }}</span></li>
                         @endif
 
                         @if (is_array($element))
                             @foreach ($element as $page => $url)
-                                @if ($page == $widgets->currentPage())
-                                    <li class="page-item active"><span class="page-link">{{ $page }}</span>
-                                    </li>
+                                @if ($page == $faqs->currentPage())
+                                    <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
                                 @else
-                                    <li class="page-item"><a class="page-link"
-                                            href="{{ $url }}">{{ $page }}</a></li>
+                                    <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
                                 @endif
                             @endforeach
                         @endif
                     @endforeach
 
                     <!-- Next Page Link -->
-                    @if ($widgets->hasMorePages())
-                        <li class="page-item"><a class="page-link" href="{{ $widgets->nextPageUrl() }}">Next</a>
-                        </li>
+                    @if ($faqs->hasMorePages())
+                        <li class="page-item"><a class="page-link" href="{{ $faqs->nextPageUrl() }}">Next</a></li>
                     @else
                         <li class="page-item disabled"><span class="page-link">Next</span></li>
                     @endif
@@ -108,13 +139,9 @@
             </nav>
 
             <div class="fw-normal small mt-4 mt-lg-0">
-                Showing <b>{{ $widgets->firstItem() }}</b> to <b>{{ $widgets->lastItem() }}</b> out of
-                <b>{{ $widgets->total() }}</b> entries
+                Showing <b>{{ $faqs->firstItem() }}</b> to <b>{{ $faqs->lastItem() }}</b> out of
+                <b>{{ $faqs->total() }}</b> entries
             </div>
         </div>
-
     </div>
-
-
-
 </x-dashboard.layout.layout>

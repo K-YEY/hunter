@@ -1,21 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Social;
 use Illuminate\Http\Request;
 
-class WidgetsController extends Controller
+class SocialController extends Controller
 {
-
-    public function index(){
-
-        return view('dashboard.tables.widgets.index');
-    }
-
-
-    public function socialView(){
+      public function socialView(){
         $social = Social::paginate(15);
         return view('dashboard.tables.social.index', compact('social'));
     }

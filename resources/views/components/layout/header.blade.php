@@ -22,15 +22,18 @@
                               Services
                           </a>
                           <div class="dropdown-menu container ">
-                              @php
-                                  $dataType = \App\Models\Admin\CommonType::with(relations: 'icon')->get();
+                            @php
+                            $dataType = \App\Models\Admin\CommonType::with('icon', 'service')->get();
+                        @endphp
 
-                              @endphp
-                              <div class="row">
-                                @foreach ($dataType as $data)
+                        <div class="row">
+                            @foreach ($dataType as $data)
                                 <div class="col-lg-3">
                                     <div class="dropdown-item-menu">
-                                        <a href="{{ route('home.service', ['id' => $data->id]) }}">
+                                        @php
+                                            $serviceId = $data->service ? $data->service->id : null;
+                                        @endphp
+                                        <a href="{{ $serviceId !== null ? route('home.service.single', ['id' => $serviceId]) : route('home.service', ['id' => $data->id]) }}">
                                             <span>
                                                 <img src="{{ $data->icon ? asset('storage/' . $data->icon->file) : '' }}"
                                                      alt="{{ $data->title }}" width="24" height="24">
@@ -40,7 +43,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
 
 
                               </div>

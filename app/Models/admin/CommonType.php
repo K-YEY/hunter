@@ -3,6 +3,7 @@
 namespace App\Models\Admin;
 
 use App\Models\Image;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,6 +26,10 @@ class CommonType extends Model
     public function icon()
     {
         return $this->belongsTo(Image::class, 'icon_id');
+    }
+    public function service()
+    {
+        return $this->hasOne(Service::class, 'type_id');
     }
 
 }

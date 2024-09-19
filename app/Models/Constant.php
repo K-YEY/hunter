@@ -11,4 +11,15 @@ class Constant extends Model
     protected $table = 'constant';
 
     protected $fillable = ['content', 'type'];
+    /**
+     * Get a constant value by key.
+     *
+     * @param string $key
+     * @return string|null
+     */
+    public static function get($type)
+    {
+        return self::where('type', $type)
+                    ->value('content');
+    }
 }

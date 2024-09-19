@@ -78,35 +78,35 @@
                             <h2 class="title-form">  Select Date & Time</h2>
                         </div>
                         <div class="form-details">
-
                             <div class="row">
                                 <div class="col-lg-8">
-                                    <form action="#">
 
-                                        <input type="hidden" id="constrained" data-inline="true" data-multiple="false"
-                                            data-open-on="tomorrow" data-time="true">
+                                    <form id="scheduleForm" method="post">
+                                        @csrf
+                                        <!-- Hidden input to hold selected date and time -->
+                                        <input type="hidden" id="constrained" name="meeting_datetime" data-inline="true" data-multiple="false"
+                                            data-open-on="today" data-time="false" data-format="Y-m-d H:i:s">
+                                        <input type="hidden" id="meeting_time" name="meeting_time">
+
                                         <button type="submit" class="btn rounded-pill px-4 mx-auto d-block mt-3 mb-5">
                                             Schedule Meeting
-
                                         </button>
-
                                     </form>
                                 </div>
 
                                 <div class="col-lg-4">
                                     <ul class="timeContainer">
-                                        <li class="timeBox selected"><span>05:00 PM</span></li>
-                                        <li class="timeBox "><span>05:30 PM</span></li>
-                                        <li class="timeBox "><span>06:00 PM</span></li>
-                                        <li class="timeBox "><span>06:30 PM</span></li>
-                                        <li class="timeBox "><span>10:00 PM</span></li>
-                                        <li class="timeBox "><span>10:30 PM</span></li>
+                                        <li class="timeBox" data-time="17:00:00"><span>05:00 PM</span></li>
+                                        <li class="timeBox" data-time="17:30:00"><span>05:30 PM</span></li>
+                                        <li class="timeBox" data-time="18:00:00"><span>06:00 PM</span></li>
+                                        <li class="timeBox" data-time="18:30:00"><span>06:30 PM</span></li>
+                                        <li class="timeBox" data-time="22:00:00"><span>10:00 PM</span></li>
+                                        <li class="timeBox" data-time="22:30:00"><span>10:30 PM</span></li>
                                     </ul>
                                 </div>
-
                             </div>
-
                         </div>
+
                     </div>
                 </div>
             </div>

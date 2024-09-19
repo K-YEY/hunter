@@ -5,9 +5,12 @@ use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\CareersController as DashCareersController;
 use App\Http\Controllers\Admin\ContactController as DashContactController;
+use App\Http\Controllers\admin\FAQController;
 use App\Http\Controllers\Admin\JobController as DashJobController;
 use App\Http\Controllers\Admin\ServicesController as DashServicesController;
-use App\Http\Controllers\admin\WidgetsController;
+use App\Http\Controllers\Admin\WidgetsController;
+use App\Http\Controllers\Admin\SettingsController as AdminSettingsController;
+use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,6 +21,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     // Auth 🚨
     Route::middleware(['auth'])->group(function () {
+        // settings ⚙️
+        Route::get('/settings', [AdminSettingsController::class, 'index'])->name('admin.settings');
         // view 🤗
         Route::get('/', [DashBoardController::class, 'index'])->name('admin.index');
 
@@ -31,7 +36,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/table/services', [DashServicesController::class, 'index'])->name('admin.service.table');
 
-        Route::get('/table/social', [WidgetsController::class, 'socialView'])->name('admin.social.table');
+        Route::get('/table/social', [SocialController::class, 'socialView'])->name('admin.social.table');
 
         // Admins ⚙️
         Route::get('/create-admin', [AdminsController::class, 'create'])->name('admin.create');
@@ -46,7 +51,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/create-service', [DashServicesController::class, 'create'])->name('admin.service.create');
 
         Route::get('/edit-service/{id}', [DashServicesController::class, 'edit'])->name('admin.service.edit');
-
+        // FAQ
+        Route::get('/faq', [FAQController::class, 'index'])->name('admin.faq');
         // action 👨‍💻
         Route::group(['prefix' => '/action'], function () {
             // Admins ⚙️
@@ -72,8 +78,11 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/update-contact', [DashContactController::class, 'updateStatus'])->name('admin.update.contact');
 
             //social 📱
-            Route::post('/update-social', [WidgetsController::class, 'updateSocial'])->name('admin.update.social');
-            
+            Route::post('/update-social', [SocialController::class, 'updateSocial'])->name('admin.update.social');
+            // FAQ
+            Route::post('/update-faq', [FAQController::class, 'update'])->name('admin.update.faq');
+            //settings 🔧
+            Route::post('/update-settings', [AdminSettingsController::class, 'update_settings'])->name('admin.update.settings');
             // logout 👋
             Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
         });

@@ -29,11 +29,10 @@ class CareerController extends Controller
         if (!session()->has('job_id')) {
             return redirect()->route('home.career');
         }
-        $json = File::get(storage_path('app/public/countries.json'));
-        $countries = json_decode($json);
+
         $constants = Constant::all();
 
-        return view('main.careerApply', compact('constants', 'countries'));
+        return view('main.careerApply', compact('constants'));
     }
 
 

@@ -101,7 +101,8 @@
                                 </svg>
 
                             </span>
-                            Renew contracts month-by-month                        </li>
+                            Renew contracts month-by-month
+                        </li>
                         <li class="list-item">
                             <span class="icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -111,7 +112,8 @@
                                 </svg>
 
                             </span>
-                            Get well-trained professionals work in your timezone                        </li>
+                            Get well-trained professionals work in your timezone
+                        </li>
                         <li class="list-item">
                             <span class="icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -427,7 +429,8 @@
                                         <p class="desc"> {{ Str::words($service->desc, 8) }}
                                         </p>
                                         <div class="button">
-                                            <a href="{{route('home.service.single', $service->id)}}" class="btn-view">
+                                            <a href="{{ route('home.service.single', $service->id) }}"
+                                                class="btn-view">
                                                 <span class="text"> Hire an {{ $service->type->title }} </span>
                                                 <svg width="12" height="12" viewBox="0 0 12 12"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -838,165 +841,26 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    What services does Remote Hiring Hunt provide?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Remote Hiring Hunt provides a variety of services to meet the needs of
-                                        businesses. These
-                                        include Virtual Assisting, Copywriting, Graphic Designing, Social Media
-                                        Management,
-                                        E-commerce Solutions, Marketing Strategy, Email Marketing, Research, and more.
-                                    </p>
+                        @foreach ($faqs as $index => $faq)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button {{ $index === 0 ? '' : 'collapsed' }}"
+                                        type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse{{ $index }}"
+                                        aria-expanded="{{ $index === 0 ? 'true' : 'false' }}"
+                                        aria-controls="collapse{{ $index }}">
+                                        {{ $faq->question }}
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ $index }}"
+                                    class="accordion-collapse collapse {{ $index === 0 ? 'show' : '' }}"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        {{ $faq->answer }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How does Remote Hiring Hunt ensure service quality?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Remote Hiring Hunt provides a variety of services to meet the needs of
-                                        businesses. These
-                                        include Virtual Assisting, Copywriting, Graphic Designing, Social Media
-                                        Management,
-                                        E-commerce Solutions, Marketing Strategy, Email Marketing, Research, and more.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false"
-                                    aria-controls="collapseThree">
-                                    How does Remote Hiring Hunt communicate with clients?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Remote Hiring Hunt provides a variety of services to meet the needs of
-                                        businesses. These
-                                        include Virtual Assisting, Copywriting, Graphic Designing, Social Media
-                                        Management,
-                                        E-commerce Solutions, Marketing Strategy, Email Marketing, Research, and more.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFour" aria-expanded="false"
-                                    aria-controls="collapseFour">
-                                    Is it possible to engage Remote Hiring Hunt for particular projects
-                                    or tasks?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Remote Hiring Hunt provides a variety of services to meet the needs of
-                                        businesses. These
-                                        include Virtual Assisting, Copywriting, Graphic Designing, Social Media
-                                        Management,
-                                        E-commerce Solutions, Marketing Strategy, Email Marketing, Research, and more.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFive" aria-expanded="false"
-                                    aria-controls="collapseFive">
-                                    How can I ensure my team is working during their shift?
-                                </button>
-                            </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Remote Hiring Hunt provides a variety of services to meet the needs of
-                                        businesses. These
-                                        include Virtual Assisting, Copywriting, Graphic Designing, Social Media
-                                        Management,
-                                        E-commerce Solutions, Marketing Strategy, Email Marketing, Research, and more.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                    Can I hire employees on an hourly basis?
-                                </button>
-                            </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Remote Hiring Hunt provides a variety of services to meet the needs of
-                                        businesses. These
-                                        include Virtual Assisting, Copywriting, Graphic Designing, Social Media
-                                        Management,
-                                        E-commerce Solutions, Marketing Strategy, Email Marketing, Research, and more.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseSeven" aria-expanded="false"
-                                    aria-controls="collapseSeven">
-                                    How proficient is your team in English?
-                                </button>
-                            </h2>
-                            <div id="collapseSeven" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Remote Hiring Hunt provides a variety of services to meet the needs of
-                                        businesses. These
-                                        include Virtual Assisting, Copywriting, Graphic Designing, Social Media
-                                        Management,
-                                        E-commerce Solutions, Marketing Strategy, Email Marketing, Research, and more.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseEight" aria-expanded="false"
-                                    aria-controls="collapseEight">
-                                    Where is your team located?
-                                </button>
-                            </h2>
-                            <div id="collapseEight" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Remote Hiring Hunt provides a variety of services to meet the needs of
-                                        businesses. These
-                                        include Virtual Assisting, Copywriting, Graphic Designing, Social Media
-                                        Management,
-                                        E-commerce Solutions, Marketing Strategy, Email Marketing, Research, and more.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

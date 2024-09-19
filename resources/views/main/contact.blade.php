@@ -77,12 +77,12 @@
                             <h2 class="title-form">Enter Details</h2>
                         </div>
                         <div class="form-details">
-                            <form action="{{ route('home.careerStore') }}" method="POST">
+                            <form action="{{ route('home.contactStore') }}" method="POST">
                                 @csrf
                                 <div class="d-flex gap-2">
                                     <div class="mb-3 w-100 position-relative">
                                         <input type="text" class="form-control rounded-pill pe-3" id="firstName"
-                                            name="firstName" placeholder="First name" />
+                                            name="firstName" placeholder="First name" value="{{ old('firstName') }}"/>
                                         <svg class="icon-form" width="24" height="24" viewBox="0 0 24 24"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class=" w-100 position-relative">
                                         <input type="text" class="form-control rounded-pill pe-3" id="lastName"
-                                            name="lastName" placeholder="Last name" />
+                                            name="lastName" placeholder="Last name"  value="{{ old('lastName') }}"/>
                                         <svg class="icon-form" width="24" height="24" viewBox="0 0 24 24"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -107,7 +107,7 @@
                                 <div class="d-flex gap-2">
                                     <div class="mb-3 w-100 position-relative">
                                         <input type="text" class="form-control rounded-pill pe-3" id="address"
-                                            name="address" placeholder="Company's address" />
+                                            name="address" placeholder="Company's address" value="{{ old('address') }}" />
                                         <svg class="icon-form" width="24" height="24" viewBox="0 0 24 24"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -118,7 +118,7 @@
                                     </div>
                                     <div class=" w-100 position-relative">
                                         <input type="email" class="form-control rounded-pill pe-3" id="email"
-                                            name="email" placeholder="Email" />
+                                            name="email" placeholder="Email" value="{{ old('email') }}" />
                                         <svg class="icon-form" width="22" height="18" viewBox="0 0 22 18"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -130,8 +130,13 @@
                                 </div>
                                 <div class="position-relative ">
                                     <select name="country" id="country" class='w-100 pe-3 rounded-pill py-2'>
+
                                         <option
-                                            value="\">Country</option>
+                                            value="">Country</option>
+                                            @php $countries = countries(); @endphp
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->code }}" @if(old('country') == $country->code) selected @endif>{{ $country->name }}</option>
+                                            @endforeach
                                     </select>
                                     <svg class="icon-form"
                                             width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -143,10 +148,10 @@
                                             </svg>
 
                                 </div>
-                                <textarea name="" id="" rows="5"
-                                    placeholder='Hi, We’re working on Food and Beverage industry and we just want to hire social media team, but we don’t know how many employees to do this kind of work as we want them to do the below responsibilities ...'></textarea>
+                                <textarea name="message" id="" rows="5"
+                                    placeholder='Hi, We’re working on Food and Beverage industry and we just want to hire social media team, but we don’t know how many employees to do this kind of work as we want them to do the below responsibilities ...'>{{ old('message') }}</textarea>
                                 <div class='confirm-text text-center'>
-                                    <input type="checkbox" id="confirm" class='me-2' />
+                                    <input type="checkbox" id="confirm" class='me-2' checked/>
                                     <label for="confirm">I confirm the processing of personal data</label>
                                 </div>
                                 <button type="submit" class="btn rounded-pill px-4 mx-auto d-block mt-5">
@@ -168,4 +173,14 @@
             </div>
         </div>
     </section>
+    @if ($errors->any())
+    <script>
+        let errorMessages = '';
+        @foreach ($errors->all() as $error)
+            errorMessages += '{{ $error }}\n';
+        @endforeach
+        alert('Error:\n' + errorMessages);
+    </script>
+@endif
+
 </x-layout.layout>
